@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import RegisterView from '../components/RegisterView';
 
-export default class App extends Component 
+import {connect} from 'react-redux';
+class App extends Component 
 {
     render(){
-        return <p>This is my new App</p>
+       const {user} = this.props.userReducer 
+        return <RegisterView />
     }
 
 }
+
+export default connect(state => state)(App);
