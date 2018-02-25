@@ -8,7 +8,6 @@ class App extends Component
        const {user} = this.props.userReducer 
         return <RegisterView />
     }
-
 }
 
 export default connect(state => state)(App);
