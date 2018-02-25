@@ -26,7 +26,7 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: __dirname + '/dist',
+        contentBase: parentDir,
         historyApiFallback:true
     }
 }
