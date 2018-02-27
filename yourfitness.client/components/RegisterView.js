@@ -6,7 +6,20 @@ import {connect} from 'react-redux';
 
 export default class RegisterView extends React.Component {
 
+  AddUser(data){
+    
+    console.log(data)
+    //fetch('http://localhost:57515/Register/Add')
+//.then((result) => {
+  // Get the result
+  // If we want text, call result.text()
+ // return result.json();
+//}).then((jsonResult) => {
+  // Do something with the result
+  //console.log(jsonResult);
+//})
 
+}
   
  render () {
 
@@ -16,7 +29,7 @@ export default class RegisterView extends React.Component {
      <div>
        <p>Please Register</p>
        <br/>
-       <form onsubmit = {this.handleSubmit}>
+       <form onSubmit = {this.AddUser}>
         <label name= "FirstNameLbl">FirstName</label>
        <input type="text" name="FirstName"/>
        <br />
@@ -31,7 +44,9 @@ export default class RegisterView extends React.Component {
        <label name= "HeightLbl">Height(in)</label>
        <input type="text" name="Height"/><br/>
        <label name= "GoalLbl">Goal</label>
-       <select type="text" name="Goal"><br/>
+       <br/>
+       <select type="text" name="Goal">
+        <option>Select</option>
         <option>Gain Weight</option>
         <option>Maintain</option>
         <option>Loose Weight</option>
