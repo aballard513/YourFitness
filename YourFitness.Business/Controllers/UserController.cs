@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using YourFitness.Business.Models;
@@ -6,6 +7,7 @@ using YourFitness.Business.Models;
 namespace YourFitness.Business.Controllers
 {
    [Route("api/[controller]")]
+   
    public class UserController
    {
       private List<User> user;
@@ -35,21 +37,24 @@ namespace YourFitness.Business.Controllers
       }
 
       [HttpGet]
+      
       public List<User> Get()
       {
          return user;
       }
 
       [HttpGet("{id}")]
+      
       public User Get(int id)
       {
          return user.FirstOrDefault(p => p.ID == id);
       }
 
       [HttpPost]
-      public int Post(User newUser)
+      
+      public string Post( User newUser)
       {
-         return 0;
+         return "You got me";
       }
 
       [HttpPut("{id}")]
