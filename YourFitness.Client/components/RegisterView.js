@@ -8,7 +8,7 @@ export default class RegisterView extends React.Component {
 
   AddUser(data){
     
-    console.log(data)
+    console.log("hello")
     //fetch('http://localhost:57515/Register/Add')
 //.then((result) => {
   // Get the result
