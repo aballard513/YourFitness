@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,7 +30,10 @@ namespace YourFitness.Business
       // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
       public void ConfigureServices(IServiceCollection services)
       {
+         services.AddCors();
          services.AddMvc();
+         
+         
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,13 +47,13 @@ namespace YourFitness.Business
 
          //app.UseStaticFiles();
 
-         //app.UseMvc(routes => {
-         //   routes.MapRoute(
-         //      name: "default",
-         //      template: "{controller}/{action}/{id?}",
-         //      defaults: new {controller = "User", action = "Index" }
-         //   );
-         //});
+         /*app.UseMvc(routes => {
+            routes.MapRoute(
+               name: "default",
+               template: "{controller}/{action}/{id?}",
+               defaults: new {controller = "User", action = "Index" }
+            );
+         });*/
 
          //app.UseRouter(
          //   route => {
@@ -64,8 +69,13 @@ namespace YourFitness.Business
          //{
          //      await context.Response.WriteAsync("Hello World!");
          //});
+         app.UseCors(
+                options => options.WithOrigins("http://localhost:8080").AllowAnyMethod()
+            );
 
          app.UseMvc();
+         
+         
       }
    }
 }
