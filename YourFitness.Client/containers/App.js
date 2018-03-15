@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import RegisterView from '../components/RegisterView';
+import HomeView from '../components/Home';
 
 import {connect} from 'react-redux';
 class App extends Component 
 {
     render(){
        const {user} = this.props.userReducer 
-        return <RegisterView />
+        return <HomeView />
     }
 
 }
