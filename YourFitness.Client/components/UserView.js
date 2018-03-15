@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import store from '../store'
+import RegisterView from './RegisterView.js'
 
 export default class UserView extends React.Component {
 
@@ -9,6 +10,7 @@ export default class UserView extends React.Component {
       this.state = {view : "initial", objs : []}
       this.checkState = this.checkState.bind(this);
       this.ViewUsers = this.ViewUsers.bind(this);
+      
     }
 
     ViewUsers(e){
@@ -36,6 +38,11 @@ export default class UserView extends React.Component {
         return this.state.view;
         }
 
+        Register(){
+            console.log("clicked")
+            return ( <div><RegisterView /></div>)
+            }
+
     render(){
         if(this.checkState() == "initial"){
             return <div><button onClick={this.ViewUsers}>ViewUsers</button></div>
@@ -43,11 +50,12 @@ export default class UserView extends React.Component {
         else{
             
             let el = this.state.objs.map(objects =>
-                <div key ={objects.id} > {objects.firstName} {objects.lastName} </div>
+                <div key ={objects.id} > {objects.firstName} {objects.lastName} <button onClick={this.UpdateUser}>update</button></div>
             )
             
             return(<div>
             {el}
+            <button onClick={this.Register}>Back</button>
             </div>
             )}
 }
