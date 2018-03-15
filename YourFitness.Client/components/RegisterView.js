@@ -9,13 +9,13 @@ import {connect} from 'react-redux';
 var uri = 'http://localhost:57515/api/user'
 export default class RegisterView extends React.Component {
 
+  constructor(props){
+    super(props);
+  }
+
 AddUser(e){
 
   var bodyFormData = new FormData();
-  bodyFormData.set('FirstName', this.state.FirstName);
-  bodyFormData.set('LastName', this.state.LastName);
-  bodyFormData.set('Weight', this.state.Weight);
-  bodyFormData.set('Height', this.state.Height);
 
   axios({
     method: 'post',
@@ -32,18 +32,12 @@ AddUser(e){
     console.log(response);
 });
 
+
 }
-
-
-
-
 
   
  render () {
-
    return (
-    
-
      <div>
        <p>Please Register</p>
        <br/>
@@ -82,7 +76,6 @@ AddUser(e){
      </div>
 
    )
-
+  }
  }
 
-}
