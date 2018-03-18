@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import store from '../store'
-import RegisterView from './RegisterView.js'
+import HomeView from './Home.js'
 
 export default class UserView extends React.Component {
 
@@ -10,7 +10,7 @@ export default class UserView extends React.Component {
       this.state = {view : "initial", objs : []}
       this.checkState = this.checkState.bind(this);
       this.ViewUsers = this.ViewUsers.bind(this);
-      
+      this.Register = this.Register.bind(this);
     }
 
     ViewUsers(e){
@@ -39,15 +39,32 @@ export default class UserView extends React.Component {
         }
 
         Register(){
-            console.log("clicked")
-            return ( <div><RegisterView /></div>)
-            }
+            this.setState({view: "register"})
+        }
 
+        updateState(){
+            if(this.checkState() == "initial")
+            {
+                this.setState({view : "user"})
+            }
+            else{
+                this.setState({view : "initial"})
+            }
+        }
     render(){
         if(this.checkState() == "initial"){
-            return <div><button onClick={this.ViewUsers}>ViewUsers</button></div>
+            return <div><button onClick={this.ViewUsers}>View All Users</button></div>
         }
-        else{
+        else if(this.checkState() == "register")
+        {
+            return (
+                    <div>
+                        <HomeView />
+                    </div>
+                    )
+        }
+        else
+        {
             
             let el = this.state.objs.map(objects =>
                 <div key ={objects.id} > {objects.firstName} {objects.lastName} <button onClick={this.UpdateUser}>update</button></div>
@@ -58,5 +75,5 @@ export default class UserView extends React.Component {
             <button onClick={this.Register}>Back</button>
             </div>
             )}
-}
+        }
 }
