@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import store from '../store'
 import HomeView from './Home.js'
-import Update from './Update.js'
 import User from '../reducers/User';
 
 export default class UserView extends React.Component {
@@ -15,11 +14,11 @@ export default class UserView extends React.Component {
       this.ViewUsers = this.ViewUsers.bind(this);
       this.Register = this.Register.bind(this);
       this.UpdateUser = this.UpdateUser.bind(this);
+      this.Update = this.Update.bind(this);
+      this.handleUser = this.handleUser.bind(this);
     }
 
     ViewUsers(e){
-
-        var bodyFormData = new FormData();
       
         axios({
           method: 'get',
@@ -61,6 +60,48 @@ export default class UserView extends React.Component {
         this.setState({view : "update"})
     }
 
+    handleUser(evt){
+        var property = evt.target.name;
+        console.log(property)
+        if(property == "firstName")
+        {   console.log("first")
+            this.setState({updateduser: {firstName: evt.target.value, lastName : this.state.updateduser.lastName, email : this.state.updateduser.email}})
+        }
+        else if(property == "lastName")
+        {
+            console.log("last")
+            this.setState({updateduser: {firstName: this.state.updateduser.firstName, lastName: evt.target.value, email : this.state.updateduser.email}})
+        }
+        else if(property == "email")
+        {
+            //console.log("email")
+            this.setState({updateduser: {firstName: this.state.updateduser.firstName, lastName: this.state.updateduser.lastName, email: evt.target.value}})
+            //console.log(this.state.updateduser)
+        }
+        //console.log(this.state.updateduser)
+    }
+
+    Update()
+    {
+        
+        var user = this.state.updateduser
+        //console.log(user);
+        var id = this.state.id;
+        console.log(id);
+        //var user = {firstName : bodyFormData.FirstName, lastName: bodyFormData.FirstName, Email: bodyFormData.email}
+        axios.put('http://localhost:57515/api/user/ '+ id, user
+        )
+        .then(function(response){
+        console.log(response);
+        })
+        .catch(function (response) {
+            //handle error;
+            console.log("failed");
+        });
+
+        this.setState({view : "initial"})
+    }
+
     render(){
         if(this.checkState() == "initial"){
             return <div><button onClick={this.ViewUsers}>View All Users</button></div>
@@ -81,14 +122,15 @@ export default class UserView extends React.Component {
             let form = (
             <div>
             <h1>Update Information</h1>
-            <form>
+            <form onSubmit = {this.Update}>
             <div>
-                <label>FirstName</label>
-                <input type="text" name="firstName" placeholder={user.firstName} /><br/>
+                <label>First Name</label>
+                <input type="text" name="firstName" placeholder={user.firstName} value={this.state.updateduser.firstName} onChange={(e) => this.handleUser(e)}/><br/>
                 <label>Last Name</label>
-                <input type="text" name="lastName" placeholder={user.lastName} /><br/>
+                <input type="text" name="lastName" placeholder={user.lastName} value={this.state.updateduser.lastName} onChange={(e) => this.handleUser(e)}/><br/>
                 <label>Email</label>
-                <input type="text" name="email" placeholder= {user.email} /><br/>
+                <input type="text" name="email" placeholder= {user.email} value={this.state.updateduser.email} onChange={(e) => this.handleUser(e)}/><br/>
+                <input type="submit" value="update" />
             </div>
             </form>
             </div>
