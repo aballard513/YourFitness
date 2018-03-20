@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using YourFitness.Business.Models;
 
 namespace YourFitness.Business.Controllers
 {
-   [Route("api/[controller]")]
+    [Route("api/[controller]")]
    
    public class UserController
    {
@@ -52,15 +52,16 @@ namespace YourFitness.Business.Controllers
 
       [HttpPost]
       
-      public string Post( User newUser)
+      public User Post([FromBody] User newUser)
       {
-         return "You got me";
+         return newUser;
       }
 
       [HttpPut("{id}")]
-      public int Put(int id, User updatedUser)
-      {
-         return 0;
+      public User Put(int id,[FromBody] User updatedUser)
+      { 
+          //updatedUser.Email = "test";
+        return updatedUser;
       }
 
       [HttpDelete("{id}")]

@@ -70,7 +70,8 @@ namespace YourFitness.Business
          //      await context.Response.WriteAsync("Hello World!");
          //});
          app.UseCors(
-                options => options.WithOrigins("http://localhost:8080").AllowAnyMethod()
+                options => options.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader()
+                //options => options.AllowAnyOrigin()
             );
 
          app.UseMvc();
