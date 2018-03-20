@@ -83,12 +83,8 @@ export default class UserView extends React.Component {
 
     Update()
     {
-        
-        var user = this.state.updateduser
-        //console.log(user);
         var id = this.state.id;
-        console.log(id);
-        //var user = {firstName : bodyFormData.FirstName, lastName: bodyFormData.FirstName, Email: bodyFormData.email}
+        var user = this.state.updateduser
         axios.put('http://localhost:57515/api/user/ '+ id, user
         )
         .then(function(response){
@@ -98,12 +94,15 @@ export default class UserView extends React.Component {
             //handle error;
             console.log("failed");
         });
-
-        this.setState({view : "initial"})
+        
+        this.setState({view : "initial"});
+        this.setState({updateduser: {firstName: "", lastName: "", email: ""}})
+            
+        
     }
-
     render(){
         if(this.checkState() == "initial"){
+            
             return <div><button onClick={this.ViewUsers}>View All Users</button></div>
         }
         else if(this.checkState() == "register")
