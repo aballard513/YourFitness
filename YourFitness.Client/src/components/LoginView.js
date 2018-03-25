@@ -2,7 +2,6 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 import RegisterView from './RegisterView';
-import UserView from './UserView';
 import '../assets/images/icons/favicon.ico'
 import '../assets/vendor/bootstrap/css/bootstrap.min.css'
 import '../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
@@ -29,18 +28,19 @@ export default class Login extends React.Component {
       super(props);
       this.state = {view : "initial"}
       this.checkState = this.checkState.bind(this);
-      this.updateState = this.updateState.bind(this);
+      this.Register = this.Register.bind(this);
     }
 
     checkState(){
         return this.state.view;
     }
 
-    updateState(){
-        
+    Register(){
+        this.setState({view : "Register"})
     }
 
     render(){
+        if(this.checkState() == "initial"){
         return(
         <div>
             <div className="limiter">
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
 
 					<div className="text-center p-t-55 p-b-30">
 						<span className="txt1">
-							Login with email
+							
 						</span>
 					</div>
 
@@ -81,7 +81,7 @@ export default class Login extends React.Component {
 							Don’t have an account?
 						</span>
 
-						<a href="#" className="txt3 bo1 hov1">
+						<a onClick={this.Register} style={{cursor: "pointer"}} className="txt3 bo1 hov1">
 							Sign up now
 						</a>
 					</div>
@@ -92,6 +92,10 @@ export default class Login extends React.Component {
 	</div>
         </div>
         
-        )
+        )}
+        else
+        {
+            return <RegisterView />
+        }
     }
 }

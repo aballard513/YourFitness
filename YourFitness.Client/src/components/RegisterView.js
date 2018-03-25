@@ -117,7 +117,6 @@ handleUser(evt){
 
 Login(){
   this.setState({view : "Login"})
-  console.log("Logging");
 }
 
   
@@ -146,28 +145,28 @@ Login(){
        </div>
 
        
-       <div className="wrap-input100 validate-input m-b-16" > 
-       <input type="text" name="LastName" className="input100" placeholder="Last Name" value={this.state.user.lastName} onChange={(e) => this.handleUser(e)}/><br/>
+       <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz">  
+       <input type="text" name="LastName" className="input100" placeholder="Last Name" value={this.state.user.lastName} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 
        <div className="wrap-input100 validate-input m-b-16" > 
-       <input type="text" name="Email" className="input100" placeholder="Email" value={this.state.user.email} onChange={(e) => this.handleUser(e)}/><br/>
+       <input type="text" name="Email" className="input100" placeholder="Email" value={this.state.user.email} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
        
        <div className="wrap-input100 validate-input m-b-16"> 
-       <input type="text" name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/><br/>
+       <input type="text" name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 
        <div className="wrap-input100 validate-input m-b-16" > 
-       <input type="text" name="Weight" className="input100" placeholder="Weight" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/><br/>
+       <input type="text" name="Weight" className="input100" placeholder="Weight" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 
        <div className="wrap-input100 validate-input m-b-16" > 
-       <input type="text" name="Height" className="input100" placeholder="Height" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/><br/>
+       <input type="text" name="Height" className="input100" placeholder="Height" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 
@@ -192,7 +191,7 @@ Login(){
 							Already have an account?
 						</span>
 
-						<a onClick={this.Login} className="txt3 bo1 hov1">
+						<a style={{cursor: "pointer"}}  onClick={this.Login} className="txt3 bo1 hov1">
 							Login
 						</a>
 					</div>
@@ -205,7 +204,7 @@ Login(){
    )
   }
   else{
-    return <Login />
+    return (<Login />)
 
   }
  }
