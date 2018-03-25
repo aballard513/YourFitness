@@ -25,9 +25,42 @@ module.exports = {
                     query:{ 
                         presets: ["react", "es2015", "stage-2"]}
                 },{
-                    test: /\.less$/,
-                    loaders: ["style-loader", "css-loader", "less-loader"]
+                    test: /\.(less|css)$/,
+                    loaders: ["style-loader", "css-loader", "less-loader", "font-loader"]
+                  },
+                  {
+                      test: /\.(ttf)$/,
+                      use: [
+                        {
+                          loader: 'ttf-loader',
+                          options: {
+                            name: './font/[hash].[ext]',
+                          },
+                        },
+                      ],
+                  },
+
+                  {
+                    test: /\.svg$/,
+                        use: [
+                        {
+                            loader: "babel-loader"
+                        },
+                        {
+                            loader: "react-svg-loader",
+                            options: {
+                                        jsx: true // true outputs JSX tags
+                                     }
+                        }
+                            ]
+                  },
+
+                  {
+                    test: /\.(eot|woff|woff2)$/,
+                        loader: "file-loader"
                   }
+
+
                 ],    
                 
     },
@@ -35,6 +68,15 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'] 
       },
+    
+      plugins: [
+        new webpack.ProvidePlugin({
+          jQuery: 'jquery',
+          Popper: 'popper.js',
+          $: 'jquery'
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ],
 
     devServer: {
         contentBase: parentDir + 'src',

@@ -1,8 +1,21 @@
 
 import React from 'react';
 import axios from 'axios';
-
-//import RegisterView from '../components/RegisterView';
+import '../assets/vendor/bootstrap/css/bootstrap.min.css'
+import '../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
+import '../assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'
+import '../assets/vendor/animate/animate.css'
+import '../assets/vendor/css-hamburgers/hamburgers.min.css'
+import '../assets/vendor/animsition/css/animsition.css'
+import '../assets/vendor/select2/select2.min.css'
+import '../assets/vendor/daterangepicker/daterangepicker.css'
+import '../assets/css/main.css'
+import '../assets/css/util.css'
+import '../assets/vendor/animsition/js/animsition.min.js'
+import '../assets/vendor/bootstrap/js/popper'
+import '../assets/vendor/bootstrap/js/bootstrap.min.js'
+import '../assets/vendor/select2/select2.min.js'
+import '../assets/vendor/daterangepicker/moment.min.js'
 
 import {connect} from 'react-redux';
 
@@ -18,20 +31,16 @@ export default class RegisterView extends React.Component {
   }
 
 AddUser(e){
-
   
   var user = this.state.user;
- 
+  console.log(user);
   axios.post(
     'http://localhost:57515/api/user',
     user
   )
   .then(response=> {
     //handle success
-    console.log("success")
-    //this.setState({result : "success"})
-    
-
+    console.log(response)
 })
 .catch(response=> {
     //handle error;
@@ -40,7 +49,7 @@ AddUser(e){
 
 this.setState({user: {firstName: "", lastName: "", email: "", password: "", weight : "",
   height: "", goal: ""}})
-  console.log(this.state.result)
+
 
 }
 
@@ -68,7 +77,7 @@ handleUser(evt){
   else if(property == "Password")
   {
       //console.log("email")
-      this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: evt.target.value, password: evt.target.value, weight : this.state.user.weight,
+      this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: evt.target.value, weight : this.state.user.weight,
         height: this.state.user.height, goal: this.state.user.goal}})
       //console.log(this.state.user)
   }
@@ -101,40 +110,47 @@ handleUser(evt){
    
    return (
      <div>
-       <p>Please Register</p>
+        <div className="limiter">
+		      <div className="container-login100">
+			      <div className="wrap-login100 p-t-90 p-b-30">
+				
+            <span className="login100-form-title p-b-40">
+						Register
+					</span>
        <br/>
-       <form onSubmit = {this.AddUser} >
-        <label name= "FirstNameLbl">FirstName</label>
-       <input type="text" name="FirstName" ref="FirstName" value={this.state.user.firstName} onChange={(e) => this.handleUser(e)}/>
+       
+        
+       <input type="text" name="FirstName" ref="FirstName" placeholder="First Name" className="input100" value={this.state.user.firstName} onChange={(e) => this.handleUser(e)}/>
        <br />
-       <label name= "LastNameLbl">LastName</label>
-       <input type="text" name="LastName" value={this.state.user.lastName} onChange={(e) => this.handleUser(e)}/><br/>
-       <label name= "EmailLbl">Email</label>
-       <input type="text" name="Email" value={this.state.user.email} onChange={(e) => this.handleUser(e)}/><br/>
-       <label name= "PasswordLbl">Password</label>
-       <input type="text" name="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/><br/>
-       <label name= "WeightLbl">Weight(lbs)</label>
-       <input type="text" name="Weight" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/><br/>
-       <label name= "HeightLbl">Height(in)</label>
-       <input type="text" name="Height" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/><br/>
+       
+       <input type="text" name="LastName" className="input100" placeholder="Last Name" value={this.state.user.lastName} onChange={(e) => this.handleUser(e)}/><br/>
+       
+       <input type="text" name="Email" className="input100" placeholder="Email" value={this.state.user.email} onChange={(e) => this.handleUser(e)}/><br/>
+       
+       <input type="text" name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/><br/>
+       
+       <input type="text" name="Weight" className="input100" placeholder="Weight" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/><br/>
+       
+       <input type="text" name="Height" className="input100" placeholder="Height" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/><br/>
        <label name= "GoalLbl">Goal</label>
        <br/>
-       <select type="text" name="Goal">
-        <option>Select</option>
-        <option value={this.state.user.goal} onChange={(e) => this.handleUser(e)}>'Gain'>Gain Weight</option>
-        <option value={this.state.user.goal} onChange={(e) => this.handleUser(e)}>Maintain</option>
-        <option value={this.state.user.goal} onChange={(e) => this.handleUser(e)}>Loose Weight </option>
+       <select name="Goal" className="custom-select" value={this.state.user.goal} onChange={(e) => this.handleUser(e)} type="text" >
+        <option> Select</option>
+        <option value="Gain"> Gain Weight</option>
+        <option value="Maintain"> Maintain</option>
+        <option value="Loose">Loose Weight </option>
        </select>
       <br/>
-      <input type="submit" value="submit" />
-      </form>
-      <div>
-        <p>Status</p>
-        <textarea defaultValue= {this.state.result}/>
-       
-
+      <br />
+      <br />
+      <div className="container-login100-form-btn">
+        <button className="login100-form-btn" type="button" onClick={this.AddUser}>Register</button>
       </div>
 
+      <br/>
+    </div>
+    </div>
+    </div>
      </div>
 
    )
