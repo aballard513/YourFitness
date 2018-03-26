@@ -28,6 +28,7 @@ export default class Home extends React.Component {
     }
 
     render(){
+        
         var page = this.checkState()
         if(page == 'initial')
         {

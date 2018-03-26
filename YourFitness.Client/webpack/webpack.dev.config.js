@@ -4,6 +4,8 @@ var path = require('path');
 var parentDir = path.join(__dirname, '../');
 
 module.exports = {
+
+    devtool: 'source-map',
     entry: [
         path.join(parentDir, 'src/app/index.js'),
         
@@ -25,9 +27,29 @@ module.exports = {
                     query:{ 
                         presets: ["react", "es2015", "stage-2"]}
                 },{
-                    test: /\.less$/,
-                    loaders: ["style-loader", "css-loader", "less-loader"]
+                    test: /\.(less|css)$/,
+                    loaders: ["style-loader", "css-loader", "less-loader", "font-loader"]
+                  },
+                  {
+                      test: /\.(ttf)$/,
+                      use: [
+                        {
+                          loader: 'ttf-loader',
+                          options: {
+                            name: './font/[hash].[ext]',
+                          },
+                        },
+                      ],
+                  },
+
+                
+
+                  {
+                    test: /\.(eot|woff|woff2|ico|svg)$/,
+                        loader: "file-loader"
                   }
+
+
                 ],    
                 
     },
@@ -35,6 +57,15 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'] 
       },
+    
+      plugins: [
+        new webpack.ProvidePlugin({
+          jQuery: 'jquery',
+          Popper: 'popper.js',
+          $: 'jquery'
+        }),
+        //new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/(en-gb|de|pl)$/)
+    ],
 
     devServer: {
         contentBase: parentDir + 'src',
