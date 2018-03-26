@@ -2,24 +2,6 @@
 import React from 'react';
 import axios from 'axios';
 
-import '../assets/vendor/bootstrap/css/bootstrap.min.css'
-import '../assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
-import '../assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'
-import '../assets/vendor/animate/animate.css'
-import '../assets/vendor/css-hamburgers/hamburgers.min.css'
-import '../assets/vendor/animsition/css/animsition.css'
-import '../assets/vendor/select2/select2.min.css'
-import '../assets/vendor/daterangepicker/daterangepicker.css'
-import '../assets/css/main.css'
-import '../assets/css/util.css'
-import '../assets/vendor/jquery/jquery-3.2.1.min.js'
-import '../assets/vendor/animsition/js/animsition.min.js'
-import '../assets/vendor/bootstrap/js/popper'
-import '../assets/vendor/bootstrap/js/bootstrap.min.js'
-import '../assets/vendor/select2/select2.min.js'
-import '../assets/vendor/daterangepicker/moment.min.js'
-import '../assets/js/main.js'
-
 
 import {connect} from 'react-redux';
 import Login from './LoginView';
@@ -30,11 +12,17 @@ export default class RegisterView extends React.Component {
   constructor(props){
     super(props);
     this.state = {view : "initial", user : {firstName: "", lastName: "", email: "", password: "", weight : "",
-    height: "", goal: ""}, result: ""}
+    height: "", goal: ""}, password: "password", icon: "fa fa fa-eye"}
     this.AddUser = this.AddUser.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.Login = this.Login.bind(this);
+    this.ShowPassword = this.ShowPassword.bind(this);
   }
+
+ValidateFields()
+{
+  
+}
 
 AddUser(e){
   
@@ -119,6 +107,22 @@ Login(){
   this.setState({view : "Login"})
 }
 
+ShowPassword(evt)
+{
+  console.log(this.state.password);
+  
+  if(this.state.password =="password")
+  {
+      this.setState({password: "text"});
+      this.setState({icon: "fa fa fa-eye-slash"});
+  }
+  else{
+    
+    this.setState({password: "password"});
+    this.setState({icon: "fa fa fa-eye"});
+  }
+}
+
   
  render () {
    if(this.checkState()=="initial")
@@ -139,24 +143,27 @@ Login(){
     </span>
   </div>
        
-       <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz"> 
+       <div className="wrap-input100 validate-input m-b-16"> 
        <input type="text" name="FirstName" ref="FirstName" placeholder="First Name" className="input100" value={this.state.user.firstName} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 
        
-       <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz">  
+       <div className="wrap-input100 validate-input m-b-16" >  
        <input type="text" name="LastName" className="input100" placeholder="Last Name" value={this.state.user.lastName} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 
-       <div className="wrap-input100 validate-input m-b-16" > 
+       <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz"> 
        <input type="text" name="Email" className="input100" placeholder="Email" value={this.state.user.email} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
        
        <div className="wrap-input100 validate-input m-b-16"> 
-       <input type="text" name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/>
+       <span className="btn-show-pass" onClick={this.ShowPassword}>
+							<i className={this.state.icon}></i>
+						</span>
+       <input type={this.state.password} name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
 

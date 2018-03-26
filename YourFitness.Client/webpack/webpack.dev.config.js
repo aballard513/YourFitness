@@ -4,6 +4,8 @@ var path = require('path');
 var parentDir = path.join(__dirname, '../');
 
 module.exports = {
+
+    devtool: 'source-map',
     entry: [
         path.join(parentDir, 'src/app/index.js'),
         
@@ -40,23 +42,10 @@ module.exports = {
                       ],
                   },
 
-                  {
-                    test: /\.svg$/,
-                        use: [
-                        {
-                            loader: "babel-loader"
-                        },
-                        {
-                            loader: "react-svg-loader",
-                            options: {
-                                        jsx: true // true outputs JSX tags
-                                     }
-                        }
-                            ]
-                  },
+                
 
                   {
-                    test: /\.(eot|woff|woff2|ico)$/,
+                    test: /\.(eot|woff|woff2|ico|svg)$/,
                         loader: "file-loader"
                   }
 
@@ -75,7 +64,7 @@ module.exports = {
           Popper: 'popper.js',
           $: 'jquery'
         }),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        //new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/(en-gb|de|pl)$/)
     ],
 
     devServer: {
