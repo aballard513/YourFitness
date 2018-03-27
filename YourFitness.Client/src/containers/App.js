@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 class App extends Component 
 {
     render(){
-       const {user} = this.props.userReducer 
+       //const {user} = this.props.store.reducer;
         return <HomeView />
     }
 
