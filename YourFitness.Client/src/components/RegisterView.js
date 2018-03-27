@@ -26,33 +26,33 @@ ValidateFields()
   
         if(!fields["firstName"] | fields["firstName"] ==" "){
            formIsValid = false;
-           errors["fname"] = "Cannot be empty";
+           errors["fname"] = "Please enter you first name";
         }
         if(!fields["lastName"] | fields["lastName"] ==" "){
           formIsValid = false;
-          errors["lname"] = "Cannot be empty";
+          errors["lname"] = "Please enter your last name";
         }
 
       if(!fields["email"] | fields["email"] == " "){
           formIsValid = false;
-          errors["email"] = "Cannot be empty";
+          errors["email"] = "Please enter a valid email";
        }
        if(!fields["password"] | fields["password"] == " "){
          formIsValid = false;
-         errors["password"] = "Cannot be empty";
+         errors["password"] = "Please enter a valid password";
        }
        if(!fields["weight"] | fields["weight"] == " "){
         formIsValid = false;
-        errors["weight"] = "Cannot be empty";
+        errors["weight"] = "Please enter your weight";
       }
      if(!fields["height"] | fields["height"] == " "){
        formIsValid = false;
-       errors["height"] = "Cannot be empty";
+       errors["height"] = "Please enter your height";
      }
 
      if(!fields["Goal"]){
       formIsValid = false;
-      errors["goal"] = "Cannot be empty";
+      errors["goal"] = "Please select a goal";
     }
         this.setState({errors: errors});
         return formIsValid;
