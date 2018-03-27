@@ -15,7 +15,6 @@ export default class RegisterView extends React.Component {
     height: "", goal: ""}, password: "password", icon: "fa fa fa-eye"}
     this.AddUser = this.AddUser.bind(this);
     this.handleUser = this.handleUser.bind(this);
-    this.Login = this.Login.bind(this);
     this.ShowPassword = this.ShowPassword.bind(this);
   }
 
@@ -45,10 +44,6 @@ this.setState({user: {firstName: "", lastName: "", email: "", password: "", weig
   height: "", goal: ""}})
 
 
-}
-
-checkState(){
-  return this.state.view;
 }
 
 handleUser(evt){
@@ -103,10 +98,6 @@ handleUser(evt){
   //console.log(this.state.user)
 }
 
-Login(){
-  this.setState({view : "Login"})
-}
-
 ShowPassword(evt)
 {
   console.log(this.state.password);
@@ -125,14 +116,9 @@ ShowPassword(evt)
 
   
  render () {
-   if(this.checkState()=="initial")
-   {
-   return (
-    <div>
-    <div className="limiter">
-<div className="container-login100">
-<div className="wrap-login100 p-t-90 p-b-30">
-<form className="login100-form validate-form">
+return (
+
+  <form className="login100-form validate-form">
   <span className="login100-form-title p-b-40">
     Register
   </span>
@@ -193,27 +179,11 @@ ShowPassword(evt)
           Register
         </button>
       </div>
-      <div className="flex-col-c p-t-224">
-						<span className="txt2 p-b-10">
-							Already have an account?
-						</span>
-
-						<a style={{cursor: "pointer"}}  onClick={this.Login} className="txt3 bo1 hov1">
-							Login
-						</a>
-					</div>
+      
       </form>
-    </div>
-    </div>
-    </div>
-     </div>
-
-   )
-  }
-  else{
-    return (<Login />)
-
-  }
+ 
+)
+   
  }
 }
 
