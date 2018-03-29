@@ -18,12 +18,17 @@ export default class RegisterView extends React.Component {
     this.ShowPassword = this.ShowPassword.bind(this);
   }
 
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
 ValidateFields()
 {
   let fields = this.state.user;
   let errors = {};
   let formIsValid = true;
-  
+  console.log(fields["goal"]);
         if(!fields["firstName"] | fields["firstName"] ==" "){
            formIsValid = false;
            errors["fname"] = "Please enter you first name";
@@ -33,10 +38,11 @@ ValidateFields()
           errors["lname"] = "Please enter your last name";
         }
 
-      if(!fields["email"] | fields["email"] == " "){
+      if(!fields["email"] | fields["email"] == " " | !this.validateEmail(fields["email"])){
           formIsValid = false;
           errors["email"] = "Please enter a valid email";
        }
+
        if(!fields["password"] | fields["password"] == " "){
          formIsValid = false;
          errors["password"] = "Please enter a valid password";
@@ -50,7 +56,7 @@ ValidateFields()
        errors["height"] = "Please enter your height";
      }
 
-     if(!fields["Goal"]){
+     if(!fields["goal"] | fields["goal"] == "Select"){
       formIsValid = false;
       errors["goal"] = "Please select a goal";
     }
@@ -226,7 +232,7 @@ return (
        <label name= "GoalLbl">Goal</label>
        <br/>
        <select name="Goal" className="custom-select" value={this.state.user.goal} onChange={(e) => this.handleUser(e)} type="text" >
-        <option> Select</option>
+        <option value="Select"> Select</option>
         <option value="Gain"> Gain Weight</option>
         <option value="Maintain"> Maintain</option>
         <option value="Loose">Loose Weight </option>
