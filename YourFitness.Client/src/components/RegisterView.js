@@ -12,21 +12,64 @@ export default class RegisterView extends React.Component {
   constructor(props){
     super(props);
     this.state = {view : "initial", user : {firstName: "", lastName: "", email: "", password: "", weight : "",
-    height: "", goal: ""}, password: "password", icon: "fa fa fa-eye"}
+    height: "", goal: ""}, password: "password", icon: "fa fa fa-eye", errors: {}}
     this.AddUser = this.AddUser.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.ShowPassword = this.ShowPassword.bind(this);
   }
 
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
 ValidateFields()
 {
-  
+  let fields = this.state.user;
+  let errors = {};
+  let formIsValid = true;
+  console.log(fields["goal"]);
+        if(!fields["firstName"] | fields["firstName"] ==" "){
+           formIsValid = false;
+           errors["fname"] = "Please enter you first name";
+        }
+        if(!fields["lastName"] | fields["lastName"] ==" "){
+          formIsValid = false;
+          errors["lname"] = "Please enter your last name";
+        }
+
+      if(!fields["email"] | fields["email"] == " " | !this.validateEmail(fields["email"])){
+          formIsValid = false;
+          errors["email"] = "Please enter a valid email";
+       }
+
+       if(!fields["password"] | fields["password"] == " "){
+         formIsValid = false;
+         errors["password"] = "Please enter a valid password";
+       }
+       if(!fields["weight"] | fields["weight"] == " "){
+        formIsValid = false;
+        errors["weight"] = "Please enter your weight";
+      }
+     if(!fields["height"] | fields["height"] == " "){
+       formIsValid = false;
+       errors["height"] = "Please enter your height";
+     }
+
+     if(!fields["goal"] | fields["goal"] == "Select"){
+      formIsValid = false;
+      errors["goal"] = "Please select a goal";
+    }
+        this.setState({errors: errors});
+        return formIsValid;
 }
 
 AddUser(e){
   
   var user = this.state.user;
-  console.log(user);
+  
+  if(this.ValidateFields()){
+  
   axios.post(
     'http://localhost:57515/api/user',
     user
@@ -42,7 +85,10 @@ AddUser(e){
 
 this.setState({user: {firstName: "", lastName: "", email: "", password: "", weight : "",
   height: "", goal: ""}})
-
+  }
+  else{
+    console.log("fail");
+  }
 
 }
 
@@ -128,23 +174,34 @@ return (
     
     </span>
   </div>
-       
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["fname"]}</span>
+       </div>
        <div className="wrap-input100 validate-input m-b-16"> 
        <input type="text" name="FirstName" ref="FirstName" placeholder="First Name" className="input100" value={this.state.user.firstName} onChange={(e) => this.handleUser(e)}/>
-       <span className="focus-input100"></span>
        </div>
-
+       <span className="focus-input100"></span>
        
+       
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["lname"]}</span>
+       </div>
        <div className="wrap-input100 validate-input m-b-16" >  
        <input type="text" name="LastName" className="input100" placeholder="Last Name" value={this.state.user.lastName} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
-
+       
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["email"]}</span>
+       </div>
        <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz"> 
        <input type="text" name="Email" className="input100" placeholder="Email" value={this.state.user.email} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
        
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["password"]}</span>
+       </div>
        <div className="wrap-input100 validate-input m-b-16"> 
        <span className="btn-show-pass" onClick={this.ShowPassword}>
 							<i className={this.state.icon}></i>
@@ -152,25 +209,35 @@ return (
        <input type={this.state.password} name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
-
+       
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["weight"]}</span>
+       </div>
        <div className="wrap-input100 validate-input m-b-16" > 
        <input type="text" name="Weight" className="input100" placeholder="Weight" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
-
+       
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["height"]}</span>
+       </div>
        <div className="wrap-input100 validate-input m-b-16" > 
        <input type="text" name="Height" className="input100" placeholder="Height" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
-
+       
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["goal"]}</span>
+       </div>
        <label name= "GoalLbl">Goal</label>
        <br/>
        <select name="Goal" className="custom-select" value={this.state.user.goal} onChange={(e) => this.handleUser(e)} type="text" >
-        <option> Select</option>
+        <option value="Select"> Select</option>
         <option value="Gain"> Gain Weight</option>
         <option value="Maintain"> Maintain</option>
         <option value="Loose">Loose Weight </option>
        </select>
+       
       <br/>
       <br />
       <br />
