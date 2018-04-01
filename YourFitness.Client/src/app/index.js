@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../containers/App.js';
 import store from '../store.js';
-import { BrowserRouter } from 'react-router-dom';
+import Home from '../components/Home';
+import { BrowserRouter} from 'react-router-dom';
+import {Route} from 'react-router-dom/Route';
 import { Provider } from 'react-redux';
 import '../assets/images/icons/favicon.ico'
 import '../assets/vendor/bootstrap/css/bootstrap.min.css'
@@ -28,9 +30,11 @@ import '../assets/js/main.js'
 
 ReactDOM.render(
 <Provider store={store}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+<BrowserRouter>
+  
+      <App />
+    
+</BrowserRouter>
 </Provider>, 
 
 

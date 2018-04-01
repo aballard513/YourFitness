@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
-import HomeView from '../components/Home';
+import Home from '../components/Home';
+import {Route, BrowserRouter} from 'react-router-dom';
 
 import {connect} from 'react-redux';
+import HomeView from '../components/HomeView';
 class App extends Component 
 {
     render(){
-       //const {user} = this.props.store.reducer;
-        return <HomeView />
+        return (
+        <BrowserRouter>
+        <switch>
+        <Route exact path='/' render={props => <Home {...props} />}/>
+        <Route exact path='/Home' component = {HomeView} />
+        </switch>
+        </BrowserRouter> 
+        )
     }
 
 }
