@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import RegisterView from './RegisterView';
 import Home from './Home';
 
+
 export default class Login extends React.Component {
 
 
@@ -12,7 +13,8 @@ export default class Login extends React.Component {
       this.state = {view : "initial", password: "password", credentials: {email: "", password: ""}, icon: "fa fa fa-eye"}
       this.checkState = this.checkState.bind(this);
       this.Register = this.Register.bind(this);
-      this.ShowPass = this.ShowPass.bind(this);
+	  this.ShowPass = this.ShowPass.bind(this);
+	  this.Home = this.Home.bind(this);
     }
 
     checkState(){
@@ -39,7 +41,13 @@ export default class Login extends React.Component {
 		}}
 	}
 	
-	
+	Home()
+	{
+		console.log("home");
+		this.props.history.push("/Home")
+		//BrowserRouter.
+	}
+
 	handleCredentials(evt){
 		var property = evt.target.name;
 		if(property == "Email")
@@ -57,13 +65,13 @@ export default class Login extends React.Component {
 	  }
 
     render(){
-		
+		console.log(this.props);
 		if(this.checkState() == "initial"){
         return(
 			<div className="limiter">
                     <div className="container-login100">
                         <div className="wrap-login100 p-t-90 p-b-30">
-			<form className="login100-form validate-form">
+			
 					<span className="login100-form-title p-b-40">
 						Login
 					</span>
@@ -88,7 +96,7 @@ export default class Login extends React.Component {
 					</div>
 
 					<div className="container-login100-form-btn">
-						<button className="login100-form-btn">
+						<button onClick={this.Home} className="login100-form-btn">
 							Login
 						</button>
 					</div>
@@ -102,7 +110,7 @@ export default class Login extends React.Component {
 							Sign up now
 						</a>
 					</div>
-					</form>
+					
 				</div>
 				</div>
 				</div>

@@ -12,6 +12,7 @@ export default class Home extends React.Component {
       this.checkState = this.checkState.bind(this);
       this.updateState = this.updateState.bind(this);
       this.Login = this.Login.bind(this);
+      
     }
 
     checkState(){
@@ -33,7 +34,6 @@ export default class Home extends React.Component {
       }
 
     render(){
-        
         var page = this.checkState()
         if(page == 'initial')
         {
@@ -63,7 +63,7 @@ export default class Home extends React.Component {
         }
         else
         {
-            return(<div><LoginView /></div>)
+            return(<div><LoginView {...this.props} /></div>)
         }
 
     }
