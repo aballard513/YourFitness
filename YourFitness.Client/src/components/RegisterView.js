@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 import {connect} from 'react-redux';
-import Login from './LoginView';
+
 
 var uri = 'http://localhost:57515/api/user'
 export default class RegisterView extends React.Component {

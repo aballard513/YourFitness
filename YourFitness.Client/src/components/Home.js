@@ -2,8 +2,8 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 import RegisterView from './RegisterView';
-import LoginView from './LoginView';
-
+import Auth from '../utils/AuthService';
+const auth = new Auth();
 export default class Home extends React.Component {
 
     constructor(props){
@@ -30,13 +30,11 @@ export default class Home extends React.Component {
     }
 
     Login(){
-        this.setState({view : "Login"})
+        auth.login();
       }
 
     render(){
-        var page = this.checkState()
-        if(page == 'initial')
-        {
+        
             return(
                 <div>
                 <div className="limiter">
@@ -60,11 +58,7 @@ export default class Home extends React.Component {
             
             
             )
-        }
-        else
-        {
-            return(<div><LoginView {...this.props} /></div>)
-        }
+       
 
     }
 }
