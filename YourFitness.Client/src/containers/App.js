@@ -1,19 +1,27 @@
 import React, {Component} from 'react';
 import Home from '../components/Home';
-import {Route, BrowserRouter, Switch} from 'react-router-dom';
-
+import {Route, Router, Switch} from 'react-router-dom';
+import Auth from '../utils/AuthService';
 import {connect} from 'react-redux';
 import HomeView from '../components/HomeView';
+import Callback from '../components/Callback.js'
+import History from '../utils/History';
+
+const auth = new Auth();
 class App extends Component 
 {
     render(){
         return (
-        <BrowserRouter>
+        <Router history = {History}>
         <Switch>
         <Route exact path='/' render={props => <Home {...props} />}/>
         <Route exact path='/Home' component = {HomeView} />
+        <Route path="/callback" render={(props) => {
+          auth.handleAuthentication(props);
+          return <Callback {...props} /> 
+        }}/>
         </Switch>
-        </BrowserRouter> 
+        </Router> 
         )
     }
 
