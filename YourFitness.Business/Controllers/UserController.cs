@@ -52,23 +52,11 @@ namespace YourFitness.Business.Controllers
 
       [HttpPost]
       
-      public HttpResponseMessage Post([FromBody] User newUser)
+      public User Post([FromBody] User newUser)
       {
-            var client = new HttpClient();
+            return newUser;
 
-            var pairs = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("username", newUser.Email),
-                    new KeyValuePair<string, string>("password", newUser.Password)
-                };
-
-            var content = new FormUrlEncodedContent(pairs);
-
-            var response = client.PostAsync("https://your-fitness.auth0.com/dbconnections/signup", content).Result;
-
-            return response;
-
-        }
+      }
 
       [HttpPut("{id}")]
       public User Put(int id,[FromBody] User updatedUser)
