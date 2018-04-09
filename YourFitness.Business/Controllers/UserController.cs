@@ -54,7 +54,8 @@ namespace YourFitness.Business.Controllers
       
       public User Post([FromBody] User newUser)
       {
-         return newUser;
+            return newUser;
+
       }
 
       [HttpPut("{id}")]
