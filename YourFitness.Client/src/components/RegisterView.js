@@ -4,7 +4,8 @@ import axios from 'axios';
 
 
 import {connect} from 'react-redux';
-
+import Auth from '../utils/AuthService';
+var auth = new Auth;
 
 var uri = 'http://localhost:57515/api/user'
 export default class RegisterView extends React.Component {
@@ -12,13 +13,13 @@ export default class RegisterView extends React.Component {
   constructor(props){
     super(props);
     this.state = {view : "initial", user : {firstName: "", lastName: "", email: "", password: "", weight : "",
-    height: "", goal: ""}, password: "password", icon: "fa fa fa-eye", errors: {}}
+    height: "", goal: ""}, password: "password", icon: "fa fa fa-eye", errors: {}, connection: "YourFitness-Auth"};
     this.AddUser = this.AddUser.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.ShowPassword = this.ShowPassword.bind(this);
   }
 
-  validateEmail(email) {
+validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
@@ -67,29 +68,15 @@ ValidateFields()
 AddUser(e){
   
   var user = this.state.user;
-  
-  if(this.ValidateFields()){
-  
-  axios.post(
-    'http://localhost:57515/api/user',
-    user
-  )
-  .then(response=> {
-    //handle success
-    console.log(response)
-})
-.catch(response=> {
-    //handle error;
-    console.log(response);
-});
 
-this.setState({user: {firstName: "", lastName: "", email: "", password: "", weight : "",
-  height: "", goal: ""}})
-  }
-  else{
-    console.log("fail");
-  }
-
+  if(this.ValidateFields())
+    {
+      auth.create(user);
+    }
+  else
+    {
+      console.log("Fail!");
+    }
 }
 
 handleUser(evt){
@@ -161,7 +148,8 @@ ShowPassword(evt)
 }
 
   
- render () {
+render () {
+  console.log(this.props);
 return (
 
   <form className="login100-form validate-form">

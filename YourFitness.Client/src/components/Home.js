@@ -30,11 +30,11 @@ export default class Home extends React.Component {
     }
 
     Login(){
-        auth.login();
+        auth.RedirectToLogin();
       }
 
+
     render(){
-        
             return(
                 <div>
                 <div className="limiter">

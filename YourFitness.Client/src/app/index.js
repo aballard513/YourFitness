@@ -27,7 +27,6 @@ import '../assets/vendor/daterangepicker/daterangepicker.js'
 import '../assets/vendor/countdowntime/countdowntime.js'
 import '../assets/js/main.js'
 
-
 ReactDOM.render(
 <Provider store={store}>
 <BrowserRouter>

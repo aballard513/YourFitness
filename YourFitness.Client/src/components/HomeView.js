@@ -1,7 +1,8 @@
 import React from 'react';
 import { isLoggedIn } from '../utils/AuthService';
 import Auth from '../utils/AuthService';
-import Home from './Home'
+import Home from './Home';
+import Login from './Login';
 const auth = new Auth();
 
 export default class HomeView extends React.Component {
@@ -16,7 +17,7 @@ export default class HomeView extends React.Component {
     {
       auth.logout();
     }
-
+    
     render(){
     if(auth.isAuthenticated())
     {
@@ -35,7 +36,7 @@ export default class HomeView extends React.Component {
     )
     }
     else{
-      return <Home/>
+      return <Login/>
     }
 	}
     
