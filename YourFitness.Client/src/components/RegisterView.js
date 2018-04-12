@@ -1,10 +1,11 @@
 
 import React from 'react';
 import axios from 'axios';
-
+import Promise from 'promise'
 
 import {connect} from 'react-redux';
 import Auth from '../utils/AuthService';
+import History from '../utils/History';
 var auth = new Auth;
 
 var uri = 'http://localhost:57515/api/user'
@@ -68,10 +69,21 @@ ValidateFields()
 AddUser(e){
   
   var user = this.state.user;
-
+  let errors = {};
   if(this.ValidateFields())
     {
-      auth.create(user);
+      auth.create(user).then((value) => {
+        console.log(value);
+        if(value === "user_exists")
+        {
+          errors["email"] = "This email is already in use!";
+          this.setState({errors: errors});
+        }else if(value === "invalid_password")
+        {
+          errors["password"] = "Password is too weak!";
+          this.setState({errors: errors});
+        }
+      });
     }
   else
     {
