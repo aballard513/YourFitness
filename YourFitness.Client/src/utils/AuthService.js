@@ -51,43 +51,40 @@ export default class Auth {
 });
 
   }
+  
 
   create(user){
-    
-  var options = { method: 'POST',
-  url: 'https://your-fitness.auth0.com/dbconnections/signup',
-  headers: { 'content-type': 'application/json' },
-  body: 
-   { client_id: 'eYsWmOA8NiLIAn38JMUkAFFlCcOF5JVQ',
+    return new Promise(function(resolve, reject){
+    var options = { method: 'POST',
+    url: 'https://your-fitness.auth0.com/dbconnections/signup',
+    headers: { 'content-type': 'application/json' },
+    body: 
+    { client_id: 'eYsWmOA8NiLIAn38JMUkAFFlCcOF5JVQ',
      connection: 'YourFitness-Auth',
      email: user.email,
      password: user.password,
      user_metadata: { firstName: user.firstName, lastName: user.lastName, weight: user.weight, height: user.height, goal: user.goal } },
-  json: true };
+    json: true };
 
-request(options, function (error, response, body) {
-  if (error) {throw new Error(error);}else{history.replace('/Login');}
-
-  console.log(body);
+    request(options, function (error, response, body) {
+      if (error) {throw new Error(error);}
+        else{
+              var exists;
+                if(body.code === "user_exists")
+                {
+                  resolve("user_exists");
+                }else
+                if(body.code == "invalid_password")
+                {
+                  resolve("invalid_password");
+                }
+                else{
+                  history.replace("/Login");
+                }
+            }
+    });
 });
-    
-   /* 
-    this.auth0.signup({
-      firstName : user.firstName,
-      lastName : user.lastName,
-      email: user.email,
-      password: user.password,
-      weight : user.weight,
-      height: user.height,
-      goal : user.goal,
-      connection: "YourFitness-Auth"
-    }, err => {
-      if (err) {
-        console.log(err);
-        alert(`Error: ${err.description}. Check the console for further details.`);
-        return;
-      }else{history.replace('/Login');}
-});*/
+ 
 
   }
 
