@@ -26,6 +26,8 @@ import '../assets/vendor/daterangepicker/moment.min.js'
 import '../assets/vendor/daterangepicker/daterangepicker.js'
 import '../assets/vendor/countdowntime/countdowntime.js'
 import '../assets/js/main.js'
+import '../assets/custom/Home.css'
+//import 'hamburgers'
 
 
 ReactDOM.render(

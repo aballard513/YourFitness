@@ -1,7 +1,7 @@
 import React from 'react';
 import { isLoggedIn } from '../utils/AuthService';
 import Auth from '../utils/AuthService';
-import Home from './Home';
+import NavBar from './NavBar';
 import Login from './Login';
 const auth = new Auth();
 
@@ -19,13 +19,16 @@ export default class HomeView extends React.Component {
     }
     
     render(){
-    if(auth.isAuthenticated())
-    {
+    //if(auth.isAuthenticated())
+    //{
 		  return (
       
       <div>
-        <p>Welcome Home!</p>
+        <NavBar />
+      
       <div>
+        <br/>
+        <br/>
       <button className="login100-form-btn" type="button" onClick={this.Logout}>
           Logout
       </button>
@@ -34,10 +37,10 @@ export default class HomeView extends React.Component {
       
     
     )
-    }
-    else{
-      return <Login/>
-    }
+    //}
+    //else{
+     // return <Login/>
+   // }
 	}
     
 }
