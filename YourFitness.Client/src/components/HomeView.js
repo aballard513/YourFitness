@@ -20,8 +20,8 @@ export default class HomeView extends React.Component {
     }
     
     render(){
-    //if(auth.isAuthenticated())
-    //{
+    if(auth.isAuthenticated())
+    {
 		  return (
         
      <div class="content">
@@ -42,10 +42,10 @@ export default class HomeView extends React.Component {
       
     
     )
-    //}
-    //else{
-     // return <Login/>
-   // }
+    }
+    else{
+      return <Login/>
+   }
 	}
     
 }
