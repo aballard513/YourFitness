@@ -3,12 +3,49 @@
     box-sizing: border-box;
 }
 
-div.app{
+#app{
     position: relative;
     width: 100%;
     height: 100%;
     border-style: solid;
     border-color: red;
+}
+
+div.content{
+    position: relative;
+    width: 100%;
+    height: 100%
 
 }
 
+
+div.nav-bar{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: black;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+
+}
+
+div.hamburger-menu{
+    border-radius: 5px;
+    position: absolute;
+    width:40px;
+    height:40px;
+    background: white;
+    margin-top:10px;
+    margin-left:10px;
+}
+
+div.bar{
+    border-radius: 5px;
+    position: relative;
+    width:35px;
+    height:10px;
+    background: black;
+    left:2.75px;
+    margin-top:2.5px;
+}

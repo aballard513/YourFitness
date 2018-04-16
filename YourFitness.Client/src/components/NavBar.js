@@ -13,8 +13,9 @@ export default class NavBar extends React.Component {
       
         
             <div className="nav-bar">
+              
                  <Menu />
-                
+                 Your Fitness
             </div> 
       
     

@@ -22,15 +22,16 @@ export default class HomeView extends React.Component {
     //if(auth.isAuthenticated())
     //{
 		  return (
-        <container>
-          <div>
+        
+     <div class="content">
+       <NavBar />
             <br/>
             <br/>
             <button className="login100-form-btn" type="button" onClick={this.Logout}>
               Logout
             </button>
-          </div>
-        </container>
+    </div>
+       
         
       
     

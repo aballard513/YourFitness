@@ -12,10 +12,10 @@ export default class Menu extends React.Component {
 		  return (
       
         
-            <div className="hamburger">
-                 <div className="menu"></div>
-                 <div className="menu"></div>
-                 <div className="menu"></div>
+            <div className="hamburger-menu">
+                 <div className="bar"></div>
+                 <div className="bar"></div>
+                 <div className="bar"></div>
             </div> 
       
     
