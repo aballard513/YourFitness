@@ -14,7 +14,7 @@ export default class NavBar extends React.Component {
         
             <div className="nav-bar">
               
-                 <Menu />
+                 <Menu OpenMenu = {this.props.OpenMenu}/>
                  Your Fitness
             </div> 
       
