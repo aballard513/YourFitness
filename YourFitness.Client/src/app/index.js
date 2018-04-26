@@ -16,7 +16,7 @@ import '../assets/vendor/bootstrap/js/bootstrap.min.js'
 import '../assets/js/main.js'
 import '../assets/custom/Home.css';
 
-var css = require('../assets/custom/ProgressBar.less');
+import '../assets/custom/ProgressBar.less';
 
 
 ReactDOM.render(
