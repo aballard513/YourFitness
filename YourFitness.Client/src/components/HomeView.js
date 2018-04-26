@@ -4,6 +4,7 @@ import Auth from '../utils/AuthService';
 import NavBar from './NavBar';
 import Login from './Login';
 import SideMenu from './SideMenu';
+import ProgressBar from './ProgressBar';
 import ProfilePicture from './ProfilePicture';
 const auth = new Auth();
 
@@ -43,7 +44,7 @@ export default class HomeView extends React.Component {
         document.getElementById("menu").style.left = "0px";
         this.setState({toggle: true});
       }else{
-        document.getElementById("menu").style.left = "-100px";
+        document.getElementById("menu").style.left = "-106px";
         this.setState({toggle: false});
       }
     }
@@ -72,6 +73,7 @@ export default class HomeView extends React.Component {
            <ProfilePicture picture={this.state.picture}/>
            <SideMenu/>
                 <div className="main-content">
+                  <ProgressBar />
                   <div className="logout">
                   <button className="login100-form-btn" type="button" onClick={this.Logout}>
                     Logout
