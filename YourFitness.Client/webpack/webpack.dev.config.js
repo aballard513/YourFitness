@@ -27,7 +27,7 @@ module.exports = {
                         presets: ["react", "es2015", "stage-2"]}
                 },{
                     test: /\.(less|css)$/,
-                    loaders: ["style-loader", "css-loader", "less-loader", "font-loader"]
+                    loaders: ["style-loader","css-loader", "less-loader" ]
                   },
                   {
                       test: /\.(ttf)$/,

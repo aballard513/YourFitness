@@ -1,0 +1,140 @@
+*{
+
+    box-sizing: border-box;
+}
+
+#app{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  
+}
+
+div.content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+div.nav-bar{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: black;
+    text-align: center;
+    color: white;
+    vertical-align: middle;
+    font-size: 40px;
+    background: -webkit-linear-gradient(rgb(12, 12, 12), rgb(179, 179, 189));
+    box-shadow: 0px 2px rgb(170, 166, 166);
+
+}
+
+div.hamburger-menu{
+    border-radius: 5px;
+    position: absolute;
+    width:31px;
+    height:27px;
+    background: white;
+    margin-top:16.5px;
+    margin-left:15px;
+    cursor: pointer;
+}
+
+div.bar{
+    border-radius: 5px;
+    position: relative;
+    width:25px;
+    height:5px;
+    background: rgb(37, 37, 37);
+    left:3px;
+    margin-top:3px;
+}
+
+div.profile{
+    position: relative;
+    width: 100%;
+    height: 120px;
+
+}
+
+div.profile-picture{
+    position: relative;
+    width: 6.25%;
+    height: 100px;
+    top: 7px;
+    left: 47%;
+    border-radius: 5px
+    
+}
+
+#profile-image{
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+div.logout{
+    position: relative;
+    margin-left:46%;
+    top:65%;
+}
+div.main-content{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+div.footer{
+    position: fixed;
+    background: -webkit-linear-gradient( rgb(179, 179, 189), rgb(12, 12, 12));
+    width:100%;
+    height: 30px;
+    bottom: 0;
+}
+
+div.user-greeting{
+    position:absolute;
+    height:27px;
+    width:150px;
+    top:16.5px;
+    left:51px;
+    color:white;
+    text-align: center;
+
+}
+
+ul {
+    float: left;
+    color:#271e1e;
+    background: rgb(177, 173, 173);
+    border-bottom-right-radius: 5px;
+    box-shadow: 6px 6px rgb(163, 159, 159);
+}
+
+ul, li{
+    margin:0px;
+    list-style-type:none;
+    border: rgb(92, 92, 92) solid 1px;
+}
+
+div.side-menu{
+position: absolute;
+width:100px;
+height:120px;
+top:60px;
+left: -106px;
+-webkit-transition:left .5s;
+-moz-transition: left .5s;
+-o-transition: left .5s;
+transition: left .5s;
+}
+
+div.calorie{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: blue solid;
+
+}

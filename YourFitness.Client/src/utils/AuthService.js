@@ -23,10 +23,30 @@ export default class Auth {
     redirectUri: 'http://localhost:8080/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
+  getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    console.log("access token from ",localStorage.getItem('access_token'))
+    console.log("acces token is ",accessToken)
+    if (!accessToken) {
+      throw new Error('No access token found');
+    }
+
+    else{
+        return accessToken;
+    }
+
+  }
   
+  getInformation(setState){
+    let accessToken = this.getAccessToken();
+      this.auth0.client.userInfo(accessToken, (err, profile) => {
+        if (profile) {
+          setState(profile.nickname, profile.picture);
+        }});
+  }
 
   RedirectToLogin() {
     history.replace('/Login');
