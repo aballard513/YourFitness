@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
+
 import RegisterView from './RegisterView';
 import Auth from '../utils/AuthService';
 const auth = new Auth();

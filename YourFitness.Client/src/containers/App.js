@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Home from '../components/Home';
 import {Route, Router, Switch} from 'react-router-dom';
 import Auth from '../utils/AuthService';
-import {connect} from 'react-redux';
 import HomeView from '../components/HomeView';
 import Callback from '../components/Callback.js'
 import History from '../utils/History';
@@ -33,4 +32,4 @@ class App extends Component
 
 }
 
-export default connect(state => state)(App);
+export default (App);
