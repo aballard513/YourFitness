@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "()\u001b[D\u0016\u0016https://github.com/aballard513/YourFitness.git)"
+    "url": "()\u001b[D\u0016\u0016https://github.com/andre-ballard/YourFitness.git)"
   },
   "author": "",
   "license": "ISC",
@@ -18,21 +18,17 @@
     "axios": "^0.18.0",
     "cors": "^2.8.4",
     "fs": "0.0.1-security",
-    "hamburgers": "^0.9.3",
     "jwt-decode": "^2.2.0",
     "net": "^1.0.2",
     "promise": "^8.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
     "request": "^2.85.0",
     "tls": "0.0.1",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -46,7 +42,6 @@
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
-    "font-loader": "^0.1.2",
     "jquery": "^3.3.1",
     "less": "^3.0.2",
     "less-loader": "^4.1.0",

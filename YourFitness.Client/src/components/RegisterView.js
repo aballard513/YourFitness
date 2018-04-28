@@ -1,9 +1,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import Promise from 'promise'
 
-import {connect} from 'react-redux';
 import Auth from '../utils/AuthService';
 import History from '../utils/History';
 var auth = new Auth;

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {connect} from 'react-redux';
 import RegisterView from './RegisterView';
 import Home from './Home';
 import Auth from '../utils/AuthService';

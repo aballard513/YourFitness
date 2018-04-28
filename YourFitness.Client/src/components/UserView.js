@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import store from '../store'
 import HomeView from './Home.js'
 import User from '../reducers/User';
 

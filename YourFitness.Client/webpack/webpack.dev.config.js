@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+
 var path = require('path');
 
 var parentDir = path.join(__dirname, '../');
@@ -15,7 +16,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/app/'
     },
-
+    
     module: {
         loaders: [{
             
@@ -65,13 +66,13 @@ module.exports = {
           Popper: 'popper.js',
           $: 'jquery'
         }),
-        //new webpack.ContextReplacementPlugin(/moment[\\\/]lang$/, /^\.\/(en-gb|de|pl)$/)
     ],
 
     devServer: {
         contentBase: parentDir + 'src',
-        historyApiFallback:true
-    }
+        historyApiFallback:true,
+    },
+
+    
     
 }
-
