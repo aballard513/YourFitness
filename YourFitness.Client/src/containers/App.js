@@ -19,7 +19,7 @@ class App extends Component
         <Router history = {History}>
         <Switch>
         <Route exact path='/' render={props => <Home {...props} />}/>
-        <Route exact path='/Home' component = {HomeView} />
+        <Route path='/Home' component = {HomeView} />
         <Route exact path='/Login' component = {Login} />
         <Route path="/callback" render={(props) => {
           auth.handleAuthentication(props);

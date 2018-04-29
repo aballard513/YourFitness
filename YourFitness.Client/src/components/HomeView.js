@@ -1,11 +1,17 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 import { isLoggedIn } from '../utils/AuthService';
 import Auth from '../utils/AuthService';
 import NavBar from './NavBar';
 import Login from './Login';
 import SideMenu from './SideMenu';
-import ProgressBar from './ProgressBar';
-import ProfilePicture from './ProfilePicture';
+import Main from './HomeViews/Main';
+import Profile from './HomeViews/ProfileView';
+import WorkOut from './HomeViews/WorkOutView';
+import Settings from './HomeViews/Settings';
+import Calorie from './HomeViews/ColorieView';
+import Management from './HomeViews/ManageWork';
+
 const auth = new Auth();
 
 export default class HomeView extends React.Component {
@@ -17,6 +23,7 @@ export default class HomeView extends React.Component {
       this.OpenMenu = this.OpenMenu.bind(this);
       this.setUser = this.setUser.bind(this);
       this.state = {toggle: false, name:"", picture:"",loading:""};
+      this.GetView = this.GetView.bind(this);
       
     }
 
@@ -44,7 +51,7 @@ export default class HomeView extends React.Component {
         document.getElementById("menu").style.left = "0px";
         this.setState({toggle: true});
       }else{
-        document.getElementById("menu").style.left = "-106px";
+        document.getElementById("menu").style.left = "-146px";
         this.setState({toggle: false});
       }
     }
@@ -58,11 +65,51 @@ export default class HomeView extends React.Component {
       });
     }
 
+    GetView(location)
+    {
+      let view = location.target.id;
+      if(view == "Profile")
+      {
+        this.props.history.push('/Home/Home-Profile');
+        this.setState({toggle:false});
+        this.OpenMenu();
+      }
+      else if(view == "Workouts")
+      {
+        this.props.history.push('/Home/Home-WorkOut');
+        this.setState({toggle:false});
+        this.OpenMenu()
+      }
+      else if(view == "Settings")
+      {
+        this.props.history.push('/Home/Home-Settings');
+        this.setState({toggle:false});
+        this.OpenMenu();
+      }
+      else if(view == "Home")
+      {
+        this.props.history.push('/Home');
+        this.setState({toggle:false});
+        this.OpenMenu()
+      }
+      else if(view == "Calorie")
+      {
+        this.props.history.push('/Home/Home-Calorie');
+        this.setState({toggle:false});
+        this.OpenMenu()
+      }
+      else if(view == "Management")
+      {
+        this.props.history.push('/Home/Home-Management');
+        this.setState({toggle:false});
+        this.OpenMenu()
+      }
+
+    }
 
     render(){
     if(auth.isAuthenticated())
     {
-      console.log("loaded: "+this.getStatus());
       if(this.getStatus() == "loaded")
       {
         return (   
@@ -70,17 +117,22 @@ export default class HomeView extends React.Component {
           <div className="content">
            <NavBar OpenMenu = {this.OpenMenu}/>
            <div className="user-greeting"> {this.state.name}</div>
-           <ProfilePicture picture={this.state.picture}/>
-           <SideMenu/>
-                <div className="main-content">
-                  <ProgressBar />
-                  <div className="logout">
+           <SideMenu Click={this.GetView}/>
+                <Switch>
+                  <Route exact path='/Home' render={() => <Main picture={this.state.picture} />} />
+                  <Route exact path='/Home/Home-Profile' render={() => <Profile />} />
+                  <Route exact path='/Home/Home-WorkOut' render={() => <WorkOut />} />
+                  <Route exact path='/Home/Home-Settings' render={() => <Settings />} />
+                  <Route exact path='/Home/Home-Calorie' render={() => <Calorie />} />
+                  <Route exact path='/Home/Home-Management' render={() => <Management />} />
+                </Switch> 
+                
+          </div>
+          <div className="logout">
                   <button className="login100-form-btn" type="button" onClick={this.Logout}>
                     Logout
-                   </button>
-                  </div> 
-                </div>    
-          </div>
+                </button>
+          </div>             
           <div className="footer"> </div>
           </div>   
           )
