@@ -22,7 +22,7 @@ export default class HomeView extends React.Component {
       this.Logout = this.Logout.bind(this);
       this.OpenMenu = this.OpenMenu.bind(this);
       this.setUser = this.setUser.bind(this);
-      this.state = {toggle: false, name:"", picture:"",loading:""};
+      this.state = {toggle: false, name:"", picture:"",loading:"", weight: ""};
       this.GetView = this.GetView.bind(this);
       
     }

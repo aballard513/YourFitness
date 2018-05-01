@@ -43,6 +43,7 @@ export default class Auth {
   getInformation(setState){
     let accessToken = this.getAccessToken();
       this.auth0.client.userInfo(accessToken, (err, profile) => {
+        console.log(profile.user_metadata);
         if (profile) {
           setState(profile.nickname, profile.picture);
         }});

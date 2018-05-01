@@ -1,4 +1,5 @@
 import React from 'react';
+import ProgressBar from './ProgressBar';
 
 export default class ProfileView extends React.Component {
 
@@ -9,7 +10,13 @@ export default class ProfileView extends React.Component {
     render(){
 		  return (
             <div className="main-content">
-                  <p>Profile View Coming Soon</p>
+                  <ProgressBar />
+                  <div className="UserInfo">
+                   <b>Stats</b> 
+                   <br/>
+                   <h2>Weight</h2>
+                   <div className="Weight"><b>145</b></div> 
+                  </div>
             </div>
     )
     }
