@@ -174,3 +174,11 @@ div.Weight, div.Height, div.Goal{
     text-align: left;
     top:5px;
 }
+
+div.logout-link{
+    float: right;
+    font-size: 15px;
+    margin-right: 15px;
+    margin-top:22px;
+    cursor: pointer;
+}

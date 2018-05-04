@@ -118,7 +118,7 @@ export default class HomeView extends React.Component {
         return (   
           <div>
           <div className="content">
-           <NavBar OpenMenu = {this.OpenMenu}/>
+           <NavBar OpenMenu = {this.OpenMenu} Logout = {this.Logout}/>
            <div className="user-greeting"> {this.state.name}</div>
            <SideMenu Click={this.GetView}/>
                 <Switch>
@@ -131,11 +131,7 @@ export default class HomeView extends React.Component {
                 </Switch> 
                 
           </div>
-          <div className="logout">
-                  <button className="login100-form-btn" type="button" onClick={this.Logout}>
-                    Logout
-                </button>
-          </div>             
+            
           <div className="footer"> </div>
           </div>   
           )
