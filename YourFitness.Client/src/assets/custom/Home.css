@@ -163,11 +163,14 @@ div.UserInfo{
 }
 
 div.UserInfo h2{
+    position: relative;
     text-align: left;
     font-size: 15px;
+    top:5px;
 }
 
-div.Weight {
-    text-align: left;
+div.Weight, div.Height, div.Goal{
     
+    text-align: left;
+    top:5px;
 }

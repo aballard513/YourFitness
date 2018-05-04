@@ -64,7 +64,7 @@ ValidateFields()
         return formIsValid;
 }
 
-AddUser(e){
+AddUser(){
   
   var user = this.state.user;
   let errors = {};
@@ -231,9 +231,9 @@ return (
        <br/>
        <select name="Goal" className="custom-select" value={this.state.user.goal} onChange={(e) => this.handleUser(e)} type="text" >
         <option value="Select"> Select</option>
-        <option value="Gain"> Gain Weight</option>
+        <option value="Gain Weight"> Gain Weight</option>
         <option value="Maintain"> Maintain</option>
-        <option value="Loose">Loose Weight </option>
+        <option value="Loose Weight">Loose Weight </option>
        </select>
        
       <br/>
