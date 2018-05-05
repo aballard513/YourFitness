@@ -182,3 +182,7 @@ div.logout-link{
     margin-top:22px;
     cursor: pointer;
 }
+
+a:mouseover{
+    color: red;
+}

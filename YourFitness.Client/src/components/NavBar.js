@@ -22,7 +22,7 @@ export default class NavBar extends React.Component {
                  <Menu OpenMenu = {this.props.OpenMenu}/>
                  Your Fitness
 
-                 <div className="logout-link" onClick={this.Logout}> Logout</div>
+                 <div className="logout-link" onClick={this.Logout}> <a>Logout</a></div>
             </div> 
       
     
