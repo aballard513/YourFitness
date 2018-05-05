@@ -63,5 +63,9 @@ resolve: {
       Popper: 'popper.js',
       $: 'jquery'
     }),
+
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+  })
 ]
 }
