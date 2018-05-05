@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/webpack --config ./webpack/webpack.dev.config.js && cp src/index.html dist/index.html && webpack-dev-server --config ./webpack/webpack.dev.config.js"
+    "start": "./node_modules/.bin/webpack --config ./webpack/webpack.dev.config.js && cp src/index.html dist/index.html && webpack-dev-server --config ./webpack/webpack.dev.config.js",
+    "build": "webpack --config ./webpack/webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,8 @@
     "request": "^2.85.0",
     "tls": "0.0.1",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-dev-server": "^2.11.2",
+    "webpack-merge": "^4.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

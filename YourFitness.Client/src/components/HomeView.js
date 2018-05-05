@@ -22,7 +22,7 @@ export default class HomeView extends React.Component {
       this.Logout = this.Logout.bind(this);
       this.OpenMenu = this.OpenMenu.bind(this);
       this.setUser = this.setUser.bind(this);
-      this.state = {toggle: false, name:"", picture:"",loading:""};
+      this.state = {toggle: false, name:"", picture:"",loading:"", weight: "", height: "", goal:""};
       this.GetView = this.GetView.bind(this);
       
     }
@@ -56,12 +56,15 @@ export default class HomeView extends React.Component {
       }
     }
     
-    setUser(name, picture)
+    setUser(name, picture, weight, height, goal)
     {
       this.setState({
         name: "Hi "+name+"!",
         picture: picture,
-        loading: "loaded"
+        loading: "loaded",
+        weight: weight,
+        height: height,
+        goal: goal
       });
     }
 
@@ -115,12 +118,12 @@ export default class HomeView extends React.Component {
         return (   
           <div>
           <div className="content">
-           <NavBar OpenMenu = {this.OpenMenu}/>
+           <NavBar OpenMenu = {this.OpenMenu} Logout = {this.Logout}/>
            <div className="user-greeting"> {this.state.name}</div>
            <SideMenu Click={this.GetView}/>
                 <Switch>
                   <Route exact path='/Home' render={() => <Main picture={this.state.picture} />} />
-                  <Route exact path='/Home/Home-Profile' render={() => <Profile />} />
+                  <Route exact path='/Home/Home-Profile' render={() => <Profile Weight={this.state.weight} Height = {this.state.height} Goal = {this.state.goal}/>} />
                   <Route exact path='/Home/Home-WorkOut' render={() => <WorkOut />} />
                   <Route exact path='/Home/Home-Settings' render={() => <Settings />} />
                   <Route exact path='/Home/Home-Calorie' render={() => <Calorie />} />
@@ -128,11 +131,7 @@ export default class HomeView extends React.Component {
                 </Switch> 
                 
           </div>
-          <div className="logout">
-                  <button className="login100-form-btn" type="button" onClick={this.Logout}>
-                    Logout
-                </button>
-          </div>             
+            
           <div className="footer"> </div>
           </div>   
           )

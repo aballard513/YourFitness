@@ -6,6 +6,11 @@ export default class NavBar extends React.Component {
 
     constructor(props){
       super(props);
+      this.Logout = this.Logout.bind(this);
+    }
+
+    Logout(){
+      this.props.Logout();
     }
     
     render(){
@@ -16,6 +21,8 @@ export default class NavBar extends React.Component {
               
                  <Menu OpenMenu = {this.props.OpenMenu}/>
                  Your Fitness
+
+                 <div className="logout-link" onClick={this.Logout}> <a>Logout</a></div>
             </div> 
       
     

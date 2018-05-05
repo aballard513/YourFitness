@@ -45,9 +45,9 @@ namespace YourFitness.Business.Controllers
 
       [HttpGet("{id}")]
       
-      public User Get(int id)
+      public bool Get(int id)
       {
-         return user.FirstOrDefault(p => p.ID == id);
+         return true;
       }
 
       [HttpPost]

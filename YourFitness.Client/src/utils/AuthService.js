@@ -23,15 +23,17 @@ export default class Auth {
     redirectUri: 'http://localhost:8080/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
     responseType: 'token id_token',
-    scope: 'openid profile'
+    scope: 'openid profile user_metadata'
   });
 
   getAccessToken() {
     const accessToken = localStorage.getItem('access_token');
-    console.log("access token from ",localStorage.getItem('access_token'))
-    console.log("acces token is ",accessToken)
+   // console.log("access token from ",localStorage.getItem('access_token'))
+   // console.log("acces token is ",accessToken)
     if (!accessToken) {
-      throw new Error('No access token found');
+      history.replace('/Login');
+      //throw new Error('No access token found');
+      
     }
 
     else{
@@ -42,11 +44,21 @@ export default class Auth {
   
   getInformation(setState){
     let accessToken = this.getAccessToken();
+    if(!accessToken)
+    {
+      console.log("User is not authenticated!");
+      //throw new Error('No access token found');
+    }else{
       this.auth0.client.userInfo(accessToken, (err, profile) => {
         if (profile) {
-          setState(profile.nickname, profile.picture);
+          
+          
+          var data = profile['https://your-fitness:auth0:com:user_metadata'];
+          console.log(name);
+          setState(data.firstName, profile.picture, data.weight, data.height, data.goal);
         }});
   }
+}
 
   RedirectToLogin() {
     history.replace('/Login');
