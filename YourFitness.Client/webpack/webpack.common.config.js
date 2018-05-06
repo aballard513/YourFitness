@@ -46,9 +46,6 @@ module: {
               {
                 test: /\.(eot|woff|woff2|ico|svg)$/,
                     loader: "file-loader"
-              }, {
-                  test: /\.html?$/,
-                        loader:"file?name=./[name].[ext]"
               }
 
 
