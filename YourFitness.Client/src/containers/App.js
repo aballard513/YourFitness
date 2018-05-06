@@ -18,10 +18,10 @@ class App extends Component
         return (
         <Router history = {History}>
         <Switch>
-        <Route exact path='/' render={props => <Home {...props} />}/>
+        <Route exact path='${process.env.Public_URL}/' render={props => <Home {...props} />}/>
         <Route path='/Home' component = {HomeView} />
-        <Route exact path='/Login' component = {Login} />
-        <Route path="/callback" render={(props) => {
+        <Route exact path='${process.env.Public_URL}/Login' component = {Login} />
+        <Route path="${process.env.Public_URL}/callback" render={(props) => {
           auth.handleAuthentication(props);
           return <Callback {...props} /> 
         }}/>
