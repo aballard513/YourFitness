@@ -2,6 +2,7 @@ var webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config.js');
 var EncodingPlugin = require('webpack-encoding-plugin');
+var path = require('path');
 var parentDir = path.join(__dirname, '../');
 
 
