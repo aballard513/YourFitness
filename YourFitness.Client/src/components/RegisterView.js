@@ -91,7 +91,6 @@ AddUser(){
 
 handleUser(evt){
   var property = evt.target.name;
-  console.log(property)
   if(property == "FirstName")
   {   console.log("first")
       this.setState({user: {firstName: evt.target.value, lastName : this.state.user.lastName, email : this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
@@ -159,7 +158,6 @@ ShowPassword(evt)
 
   
 render () {
-  console.log(this.props);
 return (
 
   <form className="login100-form validate-form">

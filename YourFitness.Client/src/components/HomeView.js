@@ -45,7 +45,6 @@ export default class HomeView extends React.Component {
 
     OpenMenu()
     {
-      console.log("fired");
       if(!this.state.toggle)
       {
         document.getElementById("menu").style.left = "0px";
