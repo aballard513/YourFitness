@@ -16,7 +16,7 @@ class App extends Component
    
     render(){
         return (
-        <Router basename={'/app'} history = {History}>
+        <Router basename={'/dist'} history = {History}>
         <Switch>
         <Route exact path='/' render={props => <Home {...props} />}/>
         <Route path='/Home' component = {HomeView} />
