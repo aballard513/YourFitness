@@ -12,6 +12,7 @@ entry: [
 output: {
     path: parentDir + 'dist/app',
     filename: '[name].js',
+    libraryTarget: 'commonjs',
     publicPath: '/app/'
 },
 
@@ -45,6 +46,9 @@ module: {
               {
                 test: /\.(eot|woff|woff2|ico|svg)$/,
                     loader: "file-loader"
+              }, {
+                  test: /\.html?$/,
+                        loader:"file?name=./[name].[ext]"
               }
 
 
@@ -64,9 +68,5 @@ resolve: {
       Popper: 'popper.js',
       $: 'jquery'
     }),
-
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-  })
 ]
 }
