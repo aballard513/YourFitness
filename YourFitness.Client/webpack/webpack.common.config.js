@@ -12,7 +12,6 @@ entry: [
 output: {
     path: parentDir + 'dist/app',
     filename: '[name].js',
-    libraryTarget: 'commonjs',
     publicPath: '/app/'
 },
 
