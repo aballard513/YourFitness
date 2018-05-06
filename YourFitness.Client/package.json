@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "/dist/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/webpack --config ./webpack/webpack.dev.config.js && cp src/index.html dist/index.html && webpack-dev-server --config ./webpack/webpack.dev.config.js",
-    "build": "./node_modules/.bin/webpack --config ./webpack/webpack.prod.config.js && cp src/index.html dist/index.html"
+    "build": "./node_modules/.bin/webpack --config ./webpack/webpack.prod.config.js && cp src/index.html  ./index.html"
   },
   "repository": {
     "type": "git",

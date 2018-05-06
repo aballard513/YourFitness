@@ -9,12 +9,6 @@ entry: [
     path.join(parentDir, 'src/app/index.js')
 ],
 
-output: {
-    path: parentDir + 'dist/app',
-    filename: '[name].js',
-    publicPath: '/app/'
-},
-
 module: {
     loaders: [{
         

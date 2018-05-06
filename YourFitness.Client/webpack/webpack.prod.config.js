@@ -2,11 +2,17 @@ var webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config.js');
 var EncodingPlugin = require('webpack-encoding-plugin');
-
+var parentDir = path.join(__dirname, '../');
 
 
 
 module.exports = merge(common, {
+
+  output: {
+    path: parentDir + 'app',
+    filename: '[name].js',
+    publicPath: '/app/'
+},
     plugins:[
             new webpack.optimize.CommonsChunkPlugin('common'),
             new webpack.optimize.UglifyJsPlugin(),
