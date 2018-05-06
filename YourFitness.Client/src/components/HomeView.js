@@ -121,12 +121,12 @@ export default class HomeView extends React.Component {
            <div className="user-greeting"> {this.state.name}</div>
            <SideMenu Click={this.GetView}/>
                 <Switch>
-                  <Route exact path='${process.env.Public_URL}/Home' render={() => <Main picture={this.state.picture} />} />
-                  <Route exact path='${process.env.Public_URL}/Home/Home-Profile' render={() => <Profile Weight={this.state.weight} Height = {this.state.height} Goal = {this.state.goal}/>} />
-                  <Route exact path='${process.env.Public_URL}/Home/Home-WorkOut' render={() => <WorkOut />} />
-                  <Route exact path='${process.env.Public_URL}/Home/Home-Settings' render={() => <Settings />} />
-                  <Route exact path='${process.env.Public_URL}/Home/Home-Calorie' render={() => <Calorie />} />
-                  <Route exact path='${process.env.Public_URL}/Home/Home-Management' render={() => <Management />} />
+                  <Route exact path='/Home' render={() => <Main picture={this.state.picture} />} />
+                  <Route exact path='/Home/Home-Profile' render={() => <Profile Weight={this.state.weight} Height = {this.state.height} Goal = {this.state.goal}/>} />
+                  <Route exact path='/Home/Home-WorkOut' render={() => <WorkOut />} />
+                  <Route exact path='/Home/Home-Settings' render={() => <Settings />} />
+                  <Route exact path='/Home/Home-Calorie' render={() => <Calorie />} />
+                  <Route exact path='/Home/Home-Management' render={() => <Management />} />
                 </Switch> 
                 
           </div>
