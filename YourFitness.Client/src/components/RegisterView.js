@@ -142,7 +142,6 @@ handleUser(evt){
 
 ShowPassword(evt)
 {
-  console.log(this.state.password);
   
   if(this.state.password =="password")
   {

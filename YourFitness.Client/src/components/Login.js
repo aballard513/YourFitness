@@ -29,7 +29,6 @@ export default class Login extends React.Component {
 
      ShowPass(evt)
     {
-		console.log("password")
 		
 		if(evt){
         if(this.state.password =="password")

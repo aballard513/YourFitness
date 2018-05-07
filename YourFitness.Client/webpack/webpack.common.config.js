@@ -9,6 +9,12 @@ entry: [
     path.join(parentDir, 'src/app/index.js')
 ],
 
+output: {
+  path: parentDir,
+  filename: '[name].js',
+  publicPath: '/'
+},
+
 module: {
     loaders: [{
         
@@ -20,7 +26,8 @@ module: {
                     presets: ["react", "es2015", "stage-2"]}
             },{
                 test: /\.(less|css)$/,
-                loaders: ["style-loader","css-loader", "less-loader" ]
+                use: ["style-loader","css-loader","less-loader"]
+                
               },
               {
                   test: /\.(ttf)$/,
@@ -28,7 +35,7 @@ module: {
                     {
                       loader: 'ttf-loader',
                       options: {
-                        name: './font/[hash].[ext]',
+                        name: './ttf/[hash].[ext]',
                       },
                     },
                   ],
@@ -38,7 +45,10 @@ module: {
 
               {
                 test: /\.(eot|woff|woff2|ico|svg)$/,
-                    loader: "file-loader"
+                    loader: "file-loader",
+                    options: {
+                      name:'./images/[hash].[ext]'
+                    }
               }
 
 
@@ -58,5 +68,10 @@ resolve: {
       Popper: 'popper.js',
       $: 'jquery'
     }),
+    new HtmlWebpackPlugin({
+      "template" : "./index.html"
+      }
+    )
+
 ]
 }

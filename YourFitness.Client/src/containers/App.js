@@ -21,7 +21,7 @@ class App extends Component
         <Route exact path='/' render={props => <Home {...props} />}/>
         <Route path='/Home' component = {HomeView} />
         <Route exact path='/Login' component = {Login} />
-        <Route path="${process.env.Public_URL}/callback" render={(props) => {
+        <Route path="/callback" render={(props) => {
           auth.handleAuthentication(props);
           return <Callback {...props} /> 
         }}/>
