@@ -10,7 +10,7 @@ entry: [
 ],
 
 output: {
-  path: parentDir,
+  path: parentDir + 'dist',
   filename: '[name].js',
   publicPath: '/'
 },
