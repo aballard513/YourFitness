@@ -20,7 +20,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'your-fitness.auth0.com',
     clientID: 'eYsWmOA8NiLIAn38JMUkAFFlCcOF5JVQ',
-    redirectUri: 'https://yourfitness.azurewebsites.net/callback',
+    redirectUri: 'http://localhost:8080/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile user_metadata'
@@ -46,7 +46,7 @@ export default class Auth {
     let accessToken = this.getAccessToken();
     if(!accessToken)
     {
-      console.log("User is not authenticated!");
+      //console.log("User is not authenticated!");
       //throw new Error('No access token found');
     }else{
       this.auth0.client.userInfo(accessToken, (err, profile) => {
@@ -54,7 +54,7 @@ export default class Auth {
           
           
           var data = profile['https://your-fitness:auth0:com:user_metadata'];
-          console.log(name);
+          //console.log(name);
           setState(data.firstName, profile.picture, data.weight, data.height, data.goal);
         }});
   }
@@ -76,8 +76,8 @@ export default class Auth {
       realm: "YourFitness-Auth"
     }, err => {
       if (err) {
-        console.log(err);
-        alert(`Error: ${err.description}. Check the console for further details.`);
+        //console.log(err);
+        alert(`${err.description}`);
         return;
       }else{history.replace('/Login');}
 });
@@ -127,7 +127,7 @@ export default class Auth {
         history.replace('/Home');
       } else if (err) {
         history.replace('/Login');
-        console.log(err);
+        //console.log(err);
       }
     });
   }
