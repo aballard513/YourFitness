@@ -62,7 +62,7 @@ div.profile{
 
 div.profile-picture{
     position: relative;
-    width: 6.25%;
+    width: 120px;
     height: 100px;
     top: 7px;
     margin: auto;

@@ -20,7 +20,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'your-fitness.auth0.com',
     clientID: 'eYsWmOA8NiLIAn38JMUkAFFlCcOF5JVQ',
-    redirectUri: 'http://yourfitness.azurewebsites.net/callback',
+    redirectUri: 'https://yourfitness.azurewebsites.net/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile user_metadata'
