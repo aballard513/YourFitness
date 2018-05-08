@@ -20,7 +20,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'your-fitness.auth0.com',
     clientID: 'eYsWmOA8NiLIAn38JMUkAFFlCcOF5JVQ',
-    redirectUri: 'http://localhost:8080/callback',
+    redirectUri: 'http://yourfitness.azurewebsites.net/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile user_metadata'
@@ -77,7 +77,7 @@ export default class Auth {
     }, err => {
       if (err) {
         //console.log(err);
-        alert(`${err.description}`);
+        alert(`Invalid username or password`);
         return;
       }else{history.replace('/Login');}
 });
