@@ -20,9 +20,11 @@ export default class NavBar extends React.Component {
             <div className="nav-bar">
               
                  <Menu OpenMenu = {this.props.OpenMenu}/>
-                  <div class="nav-center">Your Fitness</div>
-
-                 <div className="logout-link" onClick={this.Logout}> <a>Logout</a></div>
+                  <div class="nav-center">Your Fitness
+                  
+                  </div>
+                  <div className="logout-link" onClick={this.Logout}> <a>Logout</a></div>
+                
             </div> 
       
     

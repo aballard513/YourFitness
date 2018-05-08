@@ -177,10 +177,10 @@ div.Weight, div.Height, div.Goal{
 }
 
 div.logout-link{
-    float: right;
+    position: absolute;
     font-size: 15px;
-    margin-right: 15px;
-    margin-top:22px;
+    right: 15px;
+    top:20px;
     cursor: pointer;
 }
 
