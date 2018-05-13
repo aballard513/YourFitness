@@ -1,8 +1,5 @@
 import React from 'react';
 import ProgressBar from './ProgressBar';
-import BusinessService from '../../utils/BusinessService';
-
-const svc = new BusinessService;
 
 export default class ProfileView extends React.Component {
 

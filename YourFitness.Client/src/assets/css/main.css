@@ -5,20 +5,7 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
-@font-face {
-  font-family: Oswald-Regular;
-  src: url('../fonts/oswald/Oswald-Regular.ttf'); 
-}
 
-@font-face {
-  font-family: Oswald-Medium;
-  src: url('../fonts/oswald/Oswald-Medium.ttf'); 
-}
-
-@font-face {
-  font-family: Oswald-Bold;
-  src: url('../fonts/oswald/Oswald-Bold.ttf'); 
-}
 
 
 
@@ -468,6 +455,71 @@ iframe {
   visibility: visible;
   opacity: 1;
 }
+
+
+.p-t-55 {padding-top: 55px;}
+
+  .p-b-30 {padding-bottom: 30px;}
+
+  .p-b-40 {padding-bottom: 40px;}
+
+  .p-t-90 {padding-top: 90px;}
+  .m-b-20 {margin-bottom: 20px;}
+
+  .m-b-16 {margin-bottom: 16px;}
+
+  .p-t-224 {padding-top: 224px;}
+
+  .p-b-10 {padding-bottom: 10px;}
+
+  .txt1 {
+    font-family: Oswald-Bold;
+    font-size: 20px;
+    color: #333333;
+    line-height: 1.2;
+  }
+
+  .txt2 {
+    font-family: Oswald-Regular;
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.4;
+  }
+
+  .flex-col-c {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    -ms-align-items: center;
+    align-items: center;
+  }
+
+  /*---------------------*/
+
+.custom-select {
+  display: inline-block;
+  max-width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  line-height: 1.25;
+  color: #495057;
+  vertical-align: middle;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 
 @media (max-width: 992px) {
   .alert-validate::before {

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import axios from 'axios';
 
 import Auth from '../utils/AuthService';
 import History from '../utils/History';
@@ -28,7 +27,6 @@ ValidateFields()
   let fields = this.state.user;
   let errors = {};
   let formIsValid = true;
-  console.log(fields["goal"]);
         if(!fields["firstName"] | fields["firstName"] ==" "){
            formIsValid = false;
            errors["fname"] = "Please enter you first name";
@@ -85,7 +83,7 @@ AddUser(){
     }
   else
     {
-      console.log("Fail!");
+      //console.log("Fail!");
     }
 }
 

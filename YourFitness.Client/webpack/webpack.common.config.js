@@ -16,7 +16,7 @@ output: {
 },
 
 module: {
-    loaders: [{
+    rules: [{
         
         test: /\.(js|jsx)$/,
                 include: parentDir + 'src',
@@ -30,21 +30,7 @@ module: {
                 
               },
               {
-                  test: /\.(ttf)$/,
-                  use: [
-                    {
-                      loader: 'ttf-loader',
-                      options: {
-                        name: './ttf/[hash].[ext]',
-                      },
-                    },
-                  ],
-              },
-
-            
-
-              {
-                test: /\.(eot|woff|woff2|ico|svg)$/,
+                test: /\.(svg)$/,
                     loader: "file-loader",
                     options: {
                       name:'./images/[hash].[ext]'
@@ -63,11 +49,6 @@ resolve: {
   },
 
   plugins: [
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      Popper: 'popper.js',
-      $: 'jquery'
-    }),
     new HtmlWebpackPlugin({
       "template" : "./index.html"
       }
