@@ -153,6 +153,7 @@ p {
 
 div.UserInfo{
     position: relative;
+    top:200px;
     border-radius: 5px;
     background: rgb(179, 179, 179);
     width:200px;
@@ -163,17 +164,30 @@ div.UserInfo{
     box-shadow: 10px ivory;
 }
 
-div.UserInfo h2{
+div.Goals{
+    position: relative;
+    margin-left:20%;
+    border-radius: 5px;
+    background: rgb(179, 179, 179);
+    width:200px;
+    height:200px;
+    text-align: center;
+    left:15px;
+    padding-left: 5px;
+    box-shadow: 10px ivory;
+}
+
+div.UserInfo h2, div.Goals h2{
     position: relative;
     text-align: left;
     font-size: 15px;
     top:5px;
 }
 
-div.Weight, div.Height, div.Goal{
+div.Weight, div.Height, div.Goal, div.Calories{
     
     text-align: left;
-    top:5px;
+    margin-top:5px;
 }
 
 div.logout-link{

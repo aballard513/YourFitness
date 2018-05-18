@@ -26,6 +26,13 @@ export default class ProfileView extends React.Component {
                    <h2>Goal</h2>
                    <div className="Height"><b>{this.props.Goal}</b></div>
                   </div>  
+
+                  <div className="Goals">
+                   <b>Daily Goals</b> 
+                 
+                   <h2>Daily Colories</h2>
+                   <div className="Calories"><b>1200</b></div> 
+                  </div>  
             </div>
     )
   }
