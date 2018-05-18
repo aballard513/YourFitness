@@ -47,11 +47,11 @@ ValidateFields()
        }
        if(!fields["weight"] | fields["weight"] == " "){
         formIsValid = false;
-        errors["weight"] = "Please enter your weight";
+        errors["weight"] = "Please enter a valid weight";
       }
      if(!fields["height"] | fields["height"] == " "){
        formIsValid = false;
-       errors["height"] = "Please enter your height";
+       errors["height"] = "Please enter a valid height";
      }
 
      if(!fields["goal"] | fields["goal"] == "Select"){
@@ -207,7 +207,7 @@ return (
        <span style={{color: "red"}}>{this.state.errors["weight"]}</span>
        </div>
        <div className="wrap-input100 validate-input m-b-16" > 
-       <input type="text" name="Weight" className="input100" placeholder="Weight(lbs)" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/>
+       <input type="number" name="Weight" className="input100" placeholder="Weight(lbs)" value={this.state.user.weight} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
        
@@ -215,7 +215,7 @@ return (
        <span style={{color: "red"}}>{this.state.errors["height"]}</span>
        </div>
        <div className="wrap-input100 validate-input m-b-16" > 
-       <input type="text" name="Height" className="input100" placeholder="Height(in)" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/>
+       <input type="number" name="Height" className="input100" placeholder="Height(in)" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
        
