@@ -11,7 +11,7 @@ export default class RegisterView extends React.Component {
   constructor(props){
     super(props);
     this.state = {view : "initial", user : {firstName: "", lastName: "", email: "", password: "", weight : "",
-    height: "", goal: ""}, password: "password", icon: "fa fa fa-eye", errors: {}, connection: "YourFitness-Auth"};
+    height: "", goal: "", password: "", age: "", gender: ""}, showPassword: "Password",icon: "fa fa fa-eye", errors: {}, connection: "YourFitness-Auth"};
     this.AddUser = this.AddUser.bind(this);
     this.handleUser = this.handleUser.bind(this);
     this.ShowPassword = this.ShowPassword.bind(this);
@@ -56,7 +56,18 @@ ValidateFields()
 
      if(!fields["goal"] | fields["goal"] == "Select"){
       formIsValid = false;
-      errors["goal"] = "Please select a goal";
+      errors["goal"] = "Please make a selection";
+    }
+
+    if(!fields["age"] | fields["age"] == " "){
+      formIsValid = false;
+      errors["age"] = "Please enter a valid age";
+    }
+
+    if(!fields["gender"] | fields["gender"] == "Select"){
+      console.log(fields);
+      formIsValid = false;
+      errors["gender"] = "Please make a selection";
     }
         this.setState({errors: errors});
         return formIsValid;
@@ -69,7 +80,7 @@ AddUser(){
   if(this.ValidateFields())
     {
       auth.create(user).then((value) => {
-        console.log(value);
+        
         if(value === "user_exists")
         {
           errors["email"] = "This email is already in use!";
@@ -90,49 +101,64 @@ AddUser(){
 handleUser(evt){
   var property = evt.target.name;
   if(property == "FirstName")
-  {   console.log("first")
+  {   
       this.setState({user: {firstName: evt.target.value, lastName : this.state.user.lastName, email : this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
-      height: this.state.user.height, goal: this.state.user.goal}})
+      height: this.state.user.height, goal: this.state.user.goal, age: this.state.user.age, gender: this.state.user.gender}})
   }
   else if(property == "LastName")
   {
-      console.log("last")
+      
       this.setState({user: {firstName: this.state.user.firstName, lastName: evt.target.value, email : this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
-        height: this.state.user.height, goal: this.state.user.goal}})
+        height: this.state.user.height, goal: this.state.user.goal, age: this.state.user.age, gender: this.state.user.gender}})
   }
   else if(property == "Email")
   {
       //console.log("email")
       this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: evt.target.value, password: this.state.user.password, weight : this.state.user.weight,
-        height: this.state.user.height, goal: this.state.user.goal}})
+        height: this.state.user.height, goal: this.state.user.goal, age: this.state.user.age, gender: this.state.user.gender}})
       //console.log(this.state.user)
   }
   else if(property == "Password")
   {
       //console.log("email")
       this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: evt.target.value, weight : this.state.user.weight,
-        height: this.state.user.height, goal: this.state.user.goal}})
+        height: this.state.user.height, goal: this.state.user.goal, age: this.state.user.age, gender: this.state.user.gender}})
       //console.log(this.state.user)
   }
   else if(property == "Weight")
   {
       //console.log("email")
       this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: this.state.user.password, weight : evt.target.value,
-        height: this.state.user.height, goal: this.state.user.goal}})
+        height: this.state.user.height, goal: this.state.user.goal, age: this.state.user.age, gender: this.state.user.gender}})
       //console.log(this.state.user)
   }
   else if(property == "Height")
   {
       //console.log("email")
       this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
-        height: evt.target.value, goal: this.state.user.goal}})
+        height: evt.target.value, goal: this.state.user.goal, age: this.state.user.age, gender: this.state.user.gender}})
       //console.log(this.state.user)
   }
   else if(property == "Goal")
   {
       //console.log("email")
       this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
-        height: this.state.user.height, goal: evt.target.value}})
+        height: this.state.user.height, goal: evt.target.value, age: this.state.user.age, gender: this.state.user.gender}})
+      //console.log(this.state.user)
+  }
+  else if(property == "Age")
+  {
+      //console.log("email")
+    
+      this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
+        height: this.state.user.height, goal: this.state.user.goal, age: evt.target.value, gender: this.state.user.gender}})
+      //console.log(this.state.user)
+  }
+  else if(property == "Gender")
+  {
+      //console.log("email")
+      this.setState({user: {firstName: this.state.user.firstName, lastName: this.state.user.lastName, email: this.state.user.email, password: this.state.user.password, weight : this.state.user.weight,
+        height: this.state.user.height, goal: this.state.user.goal, age: this.state.user.age, gender: evt.target.value}})
       //console.log(this.state.user)
   }
   //console.log(this.state.user)
@@ -141,14 +167,14 @@ handleUser(evt){
 ShowPassword(evt)
 {
   
-  if(this.state.password =="password")
+  if(this.state.showPassword =="Password")
   {
-      this.setState({password: "text"});
+      this.setState({showPassword: "text"});
       this.setState({icon: "fa fa fa-eye-slash"});
   }
   else{
     
-    this.setState({password: "password"});
+    this.setState({showPassword: "Password"});
     this.setState({icon: "fa fa fa-eye"});
   }
 }
@@ -199,7 +225,7 @@ return (
        <span className="btn-show-pass" onClick={this.ShowPassword}>
 							<i className={this.state.icon}></i>
 						</span>
-       <input type={this.state.password} name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/>
+       <input type={this.state.showPassword} name="Password" className="input100" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
        
@@ -218,7 +244,26 @@ return (
        <input type="number" name="Height" className="input100" placeholder="Height(in)" value={this.state.user.height} onChange={(e) => this.handleUser(e)}/>
        <span className="focus-input100"></span>
        </div>
-       
+
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["age"]}</span>
+       </div>
+       <div className="wrap-input100 validate-input m-b-16" > 
+       <input type="number" name="Age" className="input100" placeholder="Age" value={this.state.user.age} onChange={(e) => this.handleUser(e)}/>
+       <span className="focus-input100"></span>
+       </div>
+        <br />
+       <div>
+       <span style={{color: "red"}}>{this.state.errors["gender"]}</span>
+       </div>
+       <label name= "Genderlbl">Gender</label>
+       <br/>
+       <select name="Gender" className="custom-select" value={this.state.user.gender} onChange={(e) => this.handleUser(e)} type="text" >
+        <option value="Select"> Select</option>
+        <option value="M"> Male</option>
+        <option value="F"> Female</option>
+       </select>
+       <br />
        <div>
        <span style={{color: "red"}}>{this.state.errors["goal"]}</span>
        </div>

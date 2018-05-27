@@ -14,17 +14,34 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.calculateCalories = this.calculateCalories.bind(this);
+    this.calculateBMI = this.calculateBMI.bind(this)
   }
 
 
   auth0 = new auth0.WebAuth({
-    domain: 'your-fitness.auth0.com',
-    clientID: 'eYsWmOA8NiLIAn38JMUkAFFlCcOF5JVQ',
-    redirectUri: 'https://localhost:8080/callback',
+    domain: '',
+    clientID: '',
+    redirectUri: 'https://yourfitness.azurewebsites.net/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile user_metadata'
   });
+
+  calculateBMI(weight,height, age, gender){
+    return 655 + (4.35 * weight) + (4.7 * height * age)
+  }
+
+  calculateCalories(weight, goal, height){
+    if(goal=="Gain Weight")
+    {
+      return weight * 20;
+    }
+    if(goal=="Loose Weight")
+    {
+      this.calculateBMI(weight,height)
+    }
+  }
 
   getAccessToken() {
     const accessToken = localStorage.getItem('access_token');
@@ -55,7 +72,8 @@ export default class Auth {
           
           var data = profile['https://your-fitness:auth0:com:user_metadata'];
           //console.log(name);
-          setState(data.firstName, profile.picture, data.weight, data.height, data.goal);
+          var calories = this.calculateCalories(data.weight, data.goal);
+          setState(data.firstName, profile.picture, data.weight, data.height, data.goal, data.gender,data.age,calories);
         }});
   }
 }
@@ -95,7 +113,7 @@ export default class Auth {
      connection: 'YourFitness-Auth',
      email: user.email,
      password: user.password,
-     user_metadata: { firstName: user.firstName, lastName: user.lastName, weight: user.weight, height: user.height, goal: user.goal } },
+     user_metadata: { firstName: user.firstName, lastName: user.lastName, weight: user.weight, height: user.height, goal: user.goal, gender: user.gender, age: user.age } },
     json: true };
 
     request(options, function (error, response, body) {

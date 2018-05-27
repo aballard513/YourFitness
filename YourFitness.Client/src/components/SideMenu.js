@@ -27,9 +27,6 @@ export default class SideMenu extends React.Component {
                     <li id="Calorie" onClick={this.SendView}>
                         Colorie Tracker
                     </li>
-                    <li id="Management" onClick={this.SendView}>
-                        Manage WorkOuts
-                    </li>
                     <li id="Workouts" onClick={this.SendView}>
                         My Workouts
                     </li>

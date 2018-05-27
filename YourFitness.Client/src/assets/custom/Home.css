@@ -111,7 +111,7 @@ ul {
     color:#271e1e;
     background: rgb(179, 179, 179);
     border-bottom-right-radius: 5px;
-    box-shadow: 6px 6px rgb(163, 159, 159);
+    box-shadow: 6px 6px 6px rgb(163, 159, 159);
     cursor: pointer;
 }
 
@@ -161,7 +161,7 @@ div.UserInfo{
     text-align: center;
     left:15px;
     padding-left: 5px;
-    box-shadow: 10px ivory;
+    /*box-shadow: 10px 10px 10px;*/
 }
 
 div.Goals{
@@ -174,20 +174,47 @@ div.Goals{
     text-align: center;
     left:15px;
     padding-left: 5px;
-    box-shadow: 10px ivory;
+    /*box-shadow: 10px 10px 10px;*/
+    
+}
+div.Goals:hover{
+    box-shadow: 10px 10px 10px rgb(163, 159, 159);
+    cursor: pointer;
+}
+div.UserInfo:hover{
+    box-shadow: 10px 10px 10px rgb(163, 159, 159);
+    cursor: pointer;
 }
 
-div.UserInfo h2, div.Goals h2{
+
+div.UserInfo h2.left, div.Goals h2{
     position: relative;
     text-align: left;
     font-size: 15px;
     top:5px;
+   
 }
 
 div.Weight, div.Height, div.Goal, div.Calories{
     
     text-align: left;
     margin-top:5px;
+    
+}
+
+div.Gender, div.Age{
+    text-align: left;
+    top:-65%;
+    position: relative;
+    margin-left: 67%;
+}
+
+div.UserInfo h2.right{
+    text-align: left;
+    top:-64%;
+    position: relative;
+    margin-left: 67%;
+    font-size: 15px;
 }
 
 div.logout-link{
