@@ -8,5 +8,3 @@ Built With ReactJS
 ## Authors
 ## License
 
-Live Site
-https://yourfitness.azurewebsites.net
