@@ -8,9 +8,15 @@ import SideMenu from './SideMenu';
 import Main from './HomeViews/Main';
 import Profile from './HomeViews/ProfileView';
 import WorkOut from './HomeViews/WorkOutView';
+import Chest from './HomeViews/WorkOutViews/ChestView';
+import Back from './HomeViews/WorkOutViews/BackView';
+import Legs from './HomeViews/WorkOutViews/LegView';
+import Biceps from './HomeViews/WorkOutViews/BicepView';
+import Triceps from './HomeViews/WorkOutViews/TricepView';
 import Settings from './HomeViews/Settings';
 import Calorie from './HomeViews/ColorieView';
 import Management from './HomeViews/ManageWork';
+import History from '../utils/History';
 
 const auth = new Auth();
 
@@ -22,14 +28,20 @@ export default class HomeView extends React.Component {
       this.Logout = this.Logout.bind(this);
       this.OpenMenu = this.OpenMenu.bind(this);
       this.setUser = this.setUser.bind(this);
-      this.state = {toggle: false, name:"", picture:"",loading:"", weight: "", height: "", goal:"", gender: "", age: "",calories:""};
       this.GetView = this.GetView.bind(this);
+      this.BackToWorkOut = this.BackToWorkOut.bind(this);
+      this.state = {toggle: false, name:"", picture:"",loading:"", weight: "", height: "", goal:"", gender: "", age: "",calories:""};
       
     }
 
     Logout()
     {
       auth.logout();
+    }
+
+    BackToWorkOut()
+    {
+      History.push('/Home/Home-WorkOut')
     }
 
     getStatus()
@@ -125,10 +137,14 @@ export default class HomeView extends React.Component {
                 <Switch>
                   <Route exact path='/Home' render={() => <Main picture={this.state.picture} />} />
                   <Route exact path='/Home/Home-Profile' render={() => <Profile Weight={this.state.weight} Height = {this.state.height} Goal = {this.state.goal} Gender = {this.state.gender} Age = {this.state.age} Calories = {this.state.calories}/>} />
-                  <Route exact path='/Home/Home-WorkOut' render={() => <WorkOut />} />
+                  <Route exact path='/Home/Home-WorkOut' render={(props) => <WorkOut />} />
                   <Route exact path='/Home/Home-Settings' render={() => <Settings />} />
                   <Route exact path='/Home/Home-Calorie' render={() => <Calorie />} />
-                  
+                  <Route exact path='/Home/Home-WorkOut/Chest' render={() => <Chest Back={this.BackToWorkOut}/>} />
+                  <Route exact path='/Home/Home-WorkOut/Back' render={() => <Back Back={this.BackToWorkOut}/>} />
+                  <Route exact path='/Home/Home-WorkOut/Legs' render={() => <Legs Back={this.BackToWorkOut}/>} />
+                  <Route exact path='/Home/Home-WorkOut/Triceps' render={() => <Triceps Back={this.BackToWorkOut}/>} />
+                  <Route exact path='/Home/Home-WorkOut/Biceps' render={() => <Biceps Back={this.BackToWorkOut}/>} />
                 </Switch> 
                 
           </div>

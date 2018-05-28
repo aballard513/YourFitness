@@ -150,6 +150,17 @@ p {
     text-align: center;
     font-size: 30px;
 }
+a.back-redirect{
+    position: relative;
+    color:black;
+    top:10px;
+    left:10px;
+    cursor: pointer;
+}
+
+a:hover{
+    color: rgb(34, 119, 230)
+}
 
 div.UserInfo{
     position: relative;
@@ -228,6 +239,40 @@ div.logout-link{
 div.nav-center{
     margin: auto;
 }
+
+div.workout-selection{
+position: relative;
+width:249.583px;
+height: 100%;
+margin-left: auto;
+margin-right: auto;
+}
+
+button.workout-selection{
+position: relative;
+width:249.583px;
+height:72%;
+background: rgb(179, 179, 179);
+margin-left: auto;
+margin-right:auto;
+margin-top:30%;
+top:200%;
+border-radius: 20px;
+text-align: center;
+color:white;
+font-size:xx-large;
+}
+
+button.workout-selection:hover{
+    background: rgb(194, 194, 194);
+}
+
+/*button.workout-selection{
+    position: relative;
+    width:249.583px;
+    height:72%;
+    border-radius: 20px;
+}*/
 
 a:mouseover{
     color: red;
