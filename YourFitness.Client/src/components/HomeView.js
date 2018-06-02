@@ -8,11 +8,7 @@ import SideMenu from './SideMenu';
 import Main from './HomeViews/Main';
 import Profile from './HomeViews/ProfileView';
 import WorkOut from './HomeViews/WorkOutView';
-import Chest from './HomeViews/WorkOutViews/ChestView';
-import Back from './HomeViews/WorkOutViews/BackView';
-import Legs from './HomeViews/WorkOutViews/LegView';
-import Biceps from './HomeViews/WorkOutViews/BicepView';
-import Triceps from './HomeViews/WorkOutViews/TricepView';
+import Selection from './HomeViews/WorkOutViews/SelectionView';
 import Settings from './HomeViews/Settings';
 import Calorie from './HomeViews/ColorieView';
 import Management from './HomeViews/ManageWork';
@@ -140,11 +136,7 @@ export default class HomeView extends React.Component {
                   <Route exact path='/Home/Home-WorkOut' render={(props) => <WorkOut />} />
                   <Route exact path='/Home/Home-Settings' render={() => <Settings />} />
                   <Route exact path='/Home/Home-Calorie' render={() => <Calorie />} />
-                  <Route exact path='/Home/Home-WorkOut/Chest' render={() => <Chest Back={this.BackToWorkOut}/>} />
-                  <Route exact path='/Home/Home-WorkOut/Back' render={() => <Back Back={this.BackToWorkOut}/>} />
-                  <Route exact path='/Home/Home-WorkOut/Legs' render={() => <Legs Back={this.BackToWorkOut}/>} />
-                  <Route exact path='/Home/Home-WorkOut/Triceps' render={() => <Triceps Back={this.BackToWorkOut}/>} />
-                  <Route exact path='/Home/Home-WorkOut/Biceps' render={() => <Biceps Back={this.BackToWorkOut}/>} />
+                  <Route exact path='/Home/Home-WorkOut/SelectionView' render={(props) => <Selection Back={this.BackToWorkOut} />} />
                 </Switch> 
                 
           </div>

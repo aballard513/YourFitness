@@ -39,39 +39,8 @@ namespace YourFitness.Business
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
       public void Configure(IApplicationBuilder app, IHostingEnvironment env)
       {
-         //if (env.IsDevelopment())
-         //{
-         //   app.UseDeveloperExceptionPage();
-         //   app.UseBrowserLink();
-         //}
-
-         //app.UseStaticFiles();
-
-         /*app.UseMvc(routes => {
-            routes.MapRoute(
-               name: "default",
-               template: "{controller}/{action}/{id?}",
-               defaults: new {controller = "User", action = "Index" }
-            );
-         });*/
-
-         //app.UseRouter(
-         //   route => {
-         //      route.MapRoute(
-         //          name: "Default",
-         //          template: "api/{controller}/{action}/{id?}",
-         //          defaults: new { controller = "User" }
-         //      );
-         //   }
-         //).UseMvcWithDefaultRoute();
-
-         //app.Run(async (context) =>
-         //{
-         //      await context.Response.WriteAsync("Hello World!");
-         //});
          app.UseCors(
-                options => options.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader()
-                //options => options.AllowAnyOrigin()
+                options => options.WithOrigins("https://yourfitness.azurewebsites.net").AllowAnyMethod().AllowAnyHeader()
             );
 
          app.UseMvc();

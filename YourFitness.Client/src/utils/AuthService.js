@@ -20,7 +20,7 @@ export default class Auth {
 
 
   auth0 = new auth0.WebAuth({
-    domain: '',
+    domain: 'your-fitness.auth0.com',
     clientID: '',
     redirectUri: 'https://yourfitness.azurewebsites.net/callback',
     audience: 'https://your-fitness.auth0.com/userinfo',
@@ -166,6 +166,7 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('exercises');
     // navigate to the Login route
     history.replace('/Login');
   }
